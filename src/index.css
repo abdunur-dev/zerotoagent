@@ -44,7 +44,7 @@ All colors MUST be HSL.
     --success: 142 76% 50%;
     --warning: 43 96% 56%;
     --glow: 0 0% 100%;
-    --gradient-spotlight: radial-gradient(circle at var(--x, 50%) var(--y, 30%), hsl(var(--glow) / 0.12), transparent 34rem), linear-gradient(180deg, hsl(0 0% 4%), hsl(var(--background)));
+    --gradient-spotlight: linear-gradient(180deg, hsl(var(--background)), hsl(var(--background)));
     --gradient-panel: transparent;
     --shadow-vercel: none;
     --font-display: "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
@@ -126,7 +126,7 @@ All colors MUST be HSL.
 
 @layer utilities {
   .vercel-grid {
-    background-image: linear-gradient(hsl(var(--border) / 0.55) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--border) / 0.55) 1px, transparent 1px), var(--gradient-spotlight);
+    background-image: linear-gradient(hsl(var(--border) / 0.5) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--border) / 0.5) 1px, transparent 1px), var(--gradient-spotlight);
     background-size: 64px 64px, 64px 64px, 100% 100%;
   }
 
