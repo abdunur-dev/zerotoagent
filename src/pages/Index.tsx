@@ -88,8 +88,8 @@ const faq: Card[] = [
 
 const Label = ({ step, title }: { step: string; title: string }) => (
   <header className="mb-8 md:mb-12">
-    <p className="font-mono text-xs uppercase tracking-[0.28em] text-muted-foreground">{step}</p>
-    <h2 className="mt-5 max-w-5xl font-display text-5xl font-bold leading-none tracking-normal text-balance md:text-7xl">{title}</h2>
+    <p className="font-mono text-xs uppercase tracking-[0.18em] text-muted-foreground">{step}</p>
+    <h2 className="mt-5 max-w-5xl font-display text-5xl font-semibold leading-none tracking-normal text-balance md:text-7xl">{title}</h2>
   </header>
 );
 
@@ -97,8 +97,8 @@ const CardGrid = ({ items, compact = false }: { items: Card[]; compact?: boolean
   <div className={`grid gap-4 ${compact ? "md:grid-cols-4" : "md:grid-cols-2 lg:grid-cols-4"}`}>
     {items.map((item) => (
       <article key={`${item.eyebrow}-${item.title}`} className="group hairline-panel rounded-md border border-border p-6 transition duration-300 hover:-translate-y-1 hover:border-primary hover:bg-surface-elevated">
-        <p className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">{item.eyebrow}</p>
-        <h3 className="mt-8 text-2xl font-semibold tracking-normal md:text-3xl">{item.title}</h3>
+        <p className="font-mono text-xs uppercase tracking-[0.16em] text-muted-foreground">{item.eyebrow}</p>
+        <h3 className="mt-8 text-2xl font-medium tracking-normal md:text-3xl">{item.title}</h3>
         <p className="mt-4 leading-7 text-muted-foreground">{item.body}</p>
       </article>
     ))}
@@ -136,7 +136,7 @@ const Index = () => {
   };
 
   return (
-    <main className="deck-scroll bg-background text-foreground selection:bg-primary selection:text-primary-foreground">
+    <main className="deck-scroll bg-background text-foreground selection:bg-accent selection:text-accent-foreground">
       <nav className="fixed left-0 right-0 top-0 z-50 flex items-center justify-between px-6 py-6 md:px-10">
         <a href="#hero" className="flex items-center gap-4 rounded-sm outline-none transition opacity-90 hover:opacity-100 focus-visible:ring-2 focus-visible:ring-ring">
           <span className="triangle-mark scale-90" aria-hidden="true" />
@@ -155,8 +155,8 @@ const Index = () => {
         <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-background to-transparent" />
         <div className="relative mx-auto flex max-w-6xl animate-fade-up flex-col items-center text-center">
           <span className="triangle-mark mb-12 animate-slow-pulse" aria-hidden="true" />
-          <h1 className="font-display text-6xl font-bold leading-none tracking-normal text-balance md:text-9xl">Zero to Agent</h1>
-          <p className="mt-8 font-mono text-sm uppercase tracking-[0.28em] text-muted-foreground md:text-base">O2A Global Build Week</p>
+          <h1 className="font-display text-6xl font-semibold leading-none tracking-normal text-balance md:text-9xl">Zero to Agent</h1>
+          <p className="mt-8 font-mono text-sm uppercase tracking-[0.18em] text-muted-foreground md:text-base">O2A Global Build Week</p>
           <div className="mt-10 flex flex-col items-center divide-border text-lg md:flex-row md:divide-x">
             <span className="flex items-center gap-3 px-6 py-2"><Calendar className="h-5 w-5" /> May 2, 2026</span>
             <span className="flex items-center gap-3 px-6 py-2"><MapPin className="h-5 w-5" /> Addis Ababa, Ethiopia</span>

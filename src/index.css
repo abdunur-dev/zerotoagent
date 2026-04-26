@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500;600&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -10,45 +10,45 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 0%;
-    --foreground: 0 0% 98%;
+    --background: 210 28% 6%;
+    --foreground: 210 24% 96%;
 
-    --card: 0 0% 4%;
+    --card: 210 22% 9%;
     --card-foreground: 0 0% 98%;
 
-    --popover: 0 0% 4%;
+    --popover: 210 22% 9%;
     --popover-foreground: 0 0% 98%;
 
     --primary: 0 0% 98%;
     --primary-foreground: 0 0% 4%;
 
-    --secondary: 0 0% 8%;
+    --secondary: 204 24% 13%;
     --secondary-foreground: 0 0% 96%;
 
-    --muted: 0 0% 10%;
-    --muted-foreground: 0 0% 52%;
+    --muted: 204 22% 14%;
+    --muted-foreground: 204 13% 66%;
 
-    --accent: 197 100% 55%;
+    --accent: 170 82% 54%;
     --accent-foreground: 0 0% 0%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 0 0% 12%;
-    --input: 0 0% 12%;
-    --ring: 0 0% 72%;
+    --border: 204 19% 19%;
+    --input: 204 19% 19%;
+    --ring: 170 82% 62%;
 
-    --surface: 0 0% 3%;
-    --surface-elevated: 0 0% 7%;
-    --surface-line: 0 0% 16%;
+    --surface: 210 25% 8%;
+    --surface-elevated: 204 24% 12%;
+    --surface-line: 204 18% 22%;
     --success: 142 76% 50%;
     --warning: 43 96% 56%;
-    --glow: 0 0% 100%;
-    --gradient-spotlight: radial-gradient(circle at var(--x, 50%) var(--y, 30%), hsl(var(--glow) / 0.16), transparent 34rem);
-    --gradient-panel: linear-gradient(180deg, hsl(var(--surface-elevated) / 0.88), hsl(var(--surface) / 0.88));
-    --shadow-vercel: 0 24px 80px hsl(0 0% 0% / 0.72), inset 0 1px 0 hsl(0 0% 100% / 0.08);
-    --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
-    --font-body: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+    --glow: 170 82% 54%;
+    --gradient-spotlight: radial-gradient(circle at var(--x, 50%) var(--y, 30%), hsl(var(--glow) / 0.18), transparent 33rem), radial-gradient(circle at 78% 18%, hsl(214 92% 58% / 0.12), transparent 27rem), linear-gradient(135deg, hsl(var(--background)), hsl(198 38% 10%));
+    --gradient-panel: linear-gradient(180deg, hsl(var(--surface-elevated) / 0.92), hsl(var(--surface) / 0.88));
+    --shadow-vercel: 0 24px 80px hsl(210 70% 2% / 0.68), inset 0 1px 0 hsl(170 82% 82% / 0.08);
+    --font-display: "Geist", ui-sans-serif, system-ui, sans-serif;
+    --font-body: "Geist", ui-sans-serif, system-ui, sans-serif;
     --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
 
     --radius: 0.375rem;
