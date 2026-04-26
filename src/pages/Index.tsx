@@ -114,9 +114,9 @@ const faq: Card[] = [
 const participantCreditUrl = "https://zerotoagent.dev/event/p9k8Y4A3E7dKFCEe";
 
 const Label = ({ step, title }: { step: string; title: string }) => (
-  <header className="mb-8 md:mb-12">
+  <header className="mb-6 md:mb-12">
     <p className="font-mono text-xs uppercase tracking-[0.18em] text-muted-foreground">{step}</p>
-    <h2 className="mt-5 max-w-5xl font-display text-5xl font-semibold leading-none tracking-normal text-balance md:text-7xl">{title}</h2>
+    <h2 className="mt-4 max-w-5xl font-display text-4xl font-semibold leading-none tracking-normal text-balance sm:text-5xl md:mt-5 md:text-7xl">{title}</h2>
   </header>
 );
 
@@ -133,7 +133,7 @@ const CardGrid = ({ items, compact = false }: { items: Card[]; compact?: boolean
 );
 
 const Slide = ({ id, children, className = "" }: { id: string; children: React.ReactNode; className?: string }) => (
-  <section id={id} className={`slide-shell flex items-center border-t border-border px-6 py-24 md:px-10 ${className}`}>
+  <section id={id} className={`slide-shell flex items-center border-t border-border px-5 py-16 md:px-10 md:py-24 ${className}`}>
     <div className="mx-auto w-full max-w-7xl animate-fade-up">{children}</div>
   </section>
 );
@@ -164,7 +164,7 @@ const Index = () => {
 
   return (
     <main className="deck-scroll bg-background text-foreground selection:bg-accent selection:text-accent-foreground">
-      <nav className="fixed left-0 right-0 top-0 z-50 flex items-center justify-between px-6 py-6 md:px-10">
+      <nav className="fixed left-0 right-0 top-0 z-50 flex items-center justify-between px-5 py-5 md:px-10 md:py-6">
         <a href="#hero" className="flex items-center gap-4 rounded-sm outline-none transition opacity-90 hover:opacity-100 focus-visible:ring-2 focus-visible:ring-ring">
           <span className="triangle-mark scale-90" aria-hidden="true" />
           <span className="text-sm font-semibold">Zero to Agent</span>
@@ -175,20 +175,20 @@ const Index = () => {
         </div>
       </nav>
 
-      <section id="hero" className="slide-shell vercel-grid relative flex items-center justify-center px-6 pt-24" onMouseMove={(e) => {
+      <section id="hero" className="slide-shell vercel-grid relative flex items-center justify-center px-5 pb-12 pt-24 md:px-6" onMouseMove={(e) => {
         e.currentTarget.style.setProperty("--x", `${e.clientX}px`);
         e.currentTarget.style.setProperty("--y", `${e.clientY}px`);
       }}>
         <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-background to-transparent" />
         <div className="relative mx-auto flex max-w-6xl animate-fade-up flex-col items-center text-center">
-          <span className="triangle-mark mb-12 animate-slow-pulse" aria-hidden="true" />
-          <h1 className="font-display text-6xl font-semibold leading-none tracking-normal text-balance md:text-9xl">Zero to <span className="hero-pixel-word">Agent</span></h1>
-          <p className="mt-8 font-mono text-sm uppercase tracking-[0.18em] text-muted-foreground md:text-base">Vercel Team Message · O2A Global Build Week</p>
-          <div className="mt-10 flex flex-col items-center divide-border text-lg md:flex-row md:divide-x">
-            <span className="flex items-center gap-3 px-6 py-2"><Calendar className="h-5 w-5" /> May 2, 2026</span>
-            <span className="flex items-center gap-3 px-6 py-2"><MapPin className="h-5 w-5" /> Addis Ababa, Ethiopia</span>
+          <span className="triangle-mark mb-8 animate-slow-pulse md:mb-12" aria-hidden="true" />
+          <h1 className="font-display text-5xl font-semibold leading-none tracking-normal text-balance sm:text-6xl md:text-9xl">Zero to <span className="hero-pixel-word">Agent</span></h1>
+          <p className="mt-6 max-w-xs font-mono text-xs uppercase tracking-[0.16em] text-muted-foreground sm:max-w-none md:mt-8 md:text-base">Vercel Team Message · O2A Global Build Week</p>
+          <div className="mt-8 flex flex-col items-center divide-border text-base md:mt-10 md:flex-row md:divide-x md:text-lg">
+            <span className="flex items-center gap-3 px-4 py-2 md:px-6"><Calendar className="h-5 w-5 shrink-0" /> May 2, 2026</span>
+            <span className="flex items-center gap-3 px-4 py-2 md:px-6"><MapPin className="h-5 w-5 shrink-0" /> Addis Ababa, Ethiopia</span>
           </div>
-          <p className="mt-12 max-w-3xl text-xl leading-8 text-muted-foreground text-balance">A focused journey from basic prompt to reliable AI agent: context, tools, memory, safety, evaluation, and shipping.</p>
+          <p className="mt-8 max-w-3xl text-base leading-7 text-muted-foreground text-balance md:mt-12 md:text-xl md:leading-8">A focused journey from basic prompt to reliable AI agent: context, tools, memory, safety, evaluation, and shipping.</p>
         </div>
       </section>
 
