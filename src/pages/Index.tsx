@@ -94,9 +94,9 @@ const Label = ({ step, title }: { step: string; title: string }) => (
 );
 
 const CardGrid = ({ items, compact = false }: { items: Card[]; compact?: boolean }) => (
-  <div className={`grid gap-4 ${compact ? "md:grid-cols-4" : "md:grid-cols-2 lg:grid-cols-4"}`}>
+  <div className={`grid ${compact ? "md:grid-cols-4" : "md:grid-cols-2 lg:grid-cols-4"}`}>
     {items.map((item) => (
-      <article key={`${item.eyebrow}-${item.title}`} className="group hairline-panel rounded-md border border-border p-6 transition duration-300 hover:-translate-y-1 hover:border-primary hover:bg-surface-elevated">
+      <article key={`${item.eyebrow}-${item.title}`} className="content-row p-6 transition duration-300 hover:bg-secondary md:border-r md:border-border">
         <p className="font-mono text-xs uppercase tracking-[0.16em] text-muted-foreground">{item.eyebrow}</p>
         <h3 className="mt-8 text-2xl font-medium tracking-normal md:text-3xl">{item.title}</h3>
         <p className="mt-4 leading-7 text-muted-foreground">{item.body}</p>
@@ -168,7 +168,7 @@ const Index = () => {
       <Slide id="video">
         <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
           <div><Label step="01 / Introduction" title="Welcome Message" /><p className="max-w-xl text-xl leading-8 text-muted-foreground">Watch the kickoff directly inside the deck, then move slide-by-slide through the build plan.</p></div>
-          <div className="overflow-hidden rounded-md border border-border bg-card shadow-2xl">
+          <div className="overflow-hidden border-y border-border bg-card">
             <iframe className="aspect-video w-full" src="https://www.youtube-nocookie.com/embed/r9hB_CQQIMk?rel=0&modestbranding=1" title="Zero to Agent welcome video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen />
           </div>
         </div>
@@ -185,12 +185,12 @@ const Index = () => {
       <Slide id="security">
         <div className="grid gap-10 lg:grid-cols-[0.7fr_1.3fr] lg:items-center">
           <Label step="08 / Important" title="Security Notice" />
-          <div className="rounded-md border border-border bg-card p-8">
-            <ShieldCheck className="mb-8 h-8 w-8 text-success" />
+          <div className="border-y border-border py-8">
+            <ShieldCheck className="mb-8 h-8 w-8" />
             <p className="text-2xl leading-10 text-foreground">A security incident involving unauthorized access to certain internal Vercel systems is being investigated. Follow official Vercel channels for the security bulletin and best-practice updates.</p>
             <div className="mt-8 grid gap-3 md:grid-cols-2">
-              <a className="flex items-center justify-between rounded-sm border border-border p-4 text-muted-foreground transition hover:border-primary hover:text-foreground" href="https://x.com/vercel" target="_blank" rel="noreferrer">Vercel Security Bulletin <ExternalLink className="h-4 w-4" /></a>
-              <a className="flex items-center justify-between rounded-sm border border-border p-4 text-muted-foreground transition hover:border-primary hover:text-foreground" href="https://x.com/rauchg" target="_blank" rel="noreferrer">CEO Statement <ExternalLink className="h-4 w-4" /></a>
+              <a className="flex items-center justify-between border-y border-border py-4 text-muted-foreground transition hover:text-foreground" href="https://x.com/vercel" target="_blank" rel="noreferrer">Vercel Security Bulletin <ExternalLink className="h-4 w-4" /></a>
+              <a className="flex items-center justify-between border-y border-border py-4 text-muted-foreground transition hover:text-foreground" href="https://x.com/rauchg" target="_blank" rel="noreferrer">CEO Statement <ExternalLink className="h-4 w-4" /></a>
             </div>
           </div>
         </div>
@@ -198,7 +198,7 @@ const Index = () => {
 
       <Slide id="tracks">
         <Label step="10 / Event Info" title="Choose a Build Track" />
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">{tracks.map(({ eyebrow, title, body, Icon }) => <article key={title} className="rounded-md border border-border bg-card p-6 transition hover:-translate-y-1 hover:border-primary"><Icon className="mb-10 h-6 w-6" /><p className="font-mono text-xs uppercase tracking-[0.2em] text-muted-foreground">{eyebrow}</p><h3 className="mt-4 text-3xl font-semibold">{title}</h3><p className="mt-4 leading-7 text-muted-foreground">{body}</p></article>)}</div>
+        <div className="grid md:grid-cols-2 lg:grid-cols-4">{tracks.map(({ eyebrow, title, body, Icon }) => <article key={title} className="content-row p-6 transition hover:bg-secondary md:border-r md:border-border"><Icon className="mb-10 h-6 w-6" /><p className="font-mono text-xs uppercase tracking-[0.16em] text-muted-foreground">{eyebrow}</p><h3 className="mt-4 text-3xl font-medium">{title}</h3><p className="mt-4 leading-7 text-muted-foreground">{body}</p></article>)}</div>
       </Slide>
 
       <Slide id="prizes"><Label step="12 / Rewards" title="Prize Pool" /><CardGrid items={prizes} compact /></Slide>
@@ -208,7 +208,7 @@ const Index = () => {
       <Slide id="submit">
         <div className="grid gap-10 lg:grid-cols-[1fr_0.9fr] lg:items-center">
           <div><Label step="16 / Submission" title="Finalize, Submit, Ship" /><p className="max-w-2xl text-xl leading-8 text-muted-foreground">Test the agent, document what it does, prepare a short demo, and submit it through the community page before judging.</p><a href="https://community.vercel.com/hackathons/zero-to-agent" target="_blank" rel="noreferrer" className="mt-10 inline-flex items-center gap-3 rounded-sm bg-primary px-6 py-3 font-semibold text-primary-foreground transition hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">Go to Submission <ArrowUpRight className="h-5 w-5" /></a></div>
-          <div className="rounded-md border border-border bg-card p-8"><MonitorUp className="mb-8 h-8 w-8" /><h3 className="text-3xl font-semibold">Resources You Need</h3><div className="mt-8 grid gap-3">{["AI SDK", "v0 Builder", "Next.js", "Vercel Docs"].map((r) => <div key={r} className="flex items-center justify-between border-b border-border py-4 text-muted-foreground"><span>{r}</span><ArrowUpRight className="h-4 w-4" /></div>)}</div></div>
+           <div className="border-y border-border py-8"><MonitorUp className="mb-8 h-8 w-8" /><h3 className="text-3xl font-medium">Resources You Need</h3><div className="mt-8 grid gap-3">{["AI SDK", "v0 Builder", "Next.js", "Vercel Docs"].map((r) => <div key={r} className="flex items-center justify-between border-b border-border py-4 text-muted-foreground"><span>{r}</span><ArrowUpRight className="h-4 w-4" /></div>)}</div></div>
         </div>
       </Slide>
 
