@@ -159,6 +159,14 @@ All colors MUST be HSL.
     box-shadow: var(--shadow-vercel);
   }
 
+  .content-row {
+    border-top: 1px solid hsl(var(--border));
+  }
+
+  .content-row:last-child {
+    border-bottom: 1px solid hsl(var(--border));
+  }
+
   .text-balance {
     text-wrap: balance;
   }
