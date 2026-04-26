@@ -128,7 +128,7 @@ const Slide = ({ id, children, className = "" }: { id: string; children: React.R
 
 const Index = () => {
   const [active, setActive] = useState(0);
-  const sectionIds = useMemo(() => ["hero", "video", "learn", "v0", "build", "agent", "why", "stack", "event", "security", "tracks", "prizes", "prepare", "schedule", "submit", "faq"], []);
+  const sectionIds = useMemo(() => ["hero", "video", "fundamentals", "anatomy", "build", "agent", "skills", "stack", "guardrails", "evaluation", "tracks", "demo", "event", "prepare", "schedule", "submit"], []);
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
@@ -176,58 +176,46 @@ const Index = () => {
             <span className="flex items-center gap-3 px-6 py-2"><Calendar className="h-5 w-5" /> May 2, 2026</span>
             <span className="flex items-center gap-3 px-6 py-2"><MapPin className="h-5 w-5" /> Addis Ababa, Ethiopia</span>
           </div>
-          <p className="mt-12 max-w-3xl text-xl leading-8 text-muted-foreground text-balance">Build AI agents that solve real problems. Learn from the Vercel team and global builders. Ship something useful and compete for real prizes.</p>
+          <p className="mt-12 max-w-3xl text-xl leading-8 text-muted-foreground text-balance">A focused journey from basic prompt to reliable AI agent: context, tools, memory, safety, evaluation, and shipping.</p>
         </div>
       </section>
 
       <Slide id="video">
         <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
-          <div><Label step="01 / Introduction" title="Welcome Message" /><p className="max-w-xl text-xl leading-8 text-muted-foreground">Watch the kickoff directly inside the deck, then move slide-by-slide through the build plan.</p></div>
+          <div><Label step="01 / Introduction" title="From Prompt to Agent" /><p className="max-w-xl text-xl leading-8 text-muted-foreground">Start with the core idea: an agent is software that can understand a goal, choose actions, use tools, and verify the result.</p></div>
           <div className="overflow-hidden border-y border-border bg-card">
             <iframe className="aspect-video w-full" src="https://www.youtube-nocookie.com/embed/r9hB_CQQIMk?rel=0&modestbranding=1" title="Zero to Agent welcome video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen />
           </div>
         </div>
       </Slide>
 
-      <Slide id="learn"><Label step="02 / Learning" title="What is Zero to Agent?" /><CardGrid items={learn} /></Slide>
-      <Slide id="v0"><Label step="03 / Tools" title="How v0 Powers Your Agent" /><CardGrid items={v0Tools} /></Slide>
-      <Slide id="build"><Label step="04 / Development" title="How to Build Your Agent" /><CardGrid items={steps} compact /></Slide>
+      <Slide id="fundamentals"><Label step="02 / Foundation" title="What Makes an Agent?" /><CardGrid items={fundamentals} compact /></Slide>
+      <Slide id="anatomy"><Label step="03 / Anatomy" title="The Parts of an Agent" /><CardGrid items={anatomy} compact /></Slide>
+      <Slide id="build"><Label step="04 / Build Plan" title="Zero to Working Agent" /><CardGrid items={buildPlan} compact /></Slide>
       <Slide id="agent"><Label step="05 / What Is" title="The Agent Loop" /><CardGrid items={agentLoop} compact /></Slide>
-      <Slide id="why"><Label step="06 / Why Agents" title="The Future is Autonomous" /><CardGrid items={why} compact /></Slide>
-      <Slide id="stack"><Label step="08 / Tools" title="Your Tech Stack" /><CardGrid items={stack} compact /></Slide>
-      <Slide id="event"><Label step="09 / Event" title="Event Details" /><CardGrid items={details} compact /></Slide>
-
-      <Slide id="security">
-        <div className="grid gap-10 lg:grid-cols-[0.7fr_1.3fr] lg:items-center">
-          <Label step="08 / Important" title="Security Notice" />
-          <div className="border-y border-border py-8">
-            <ShieldCheck className="mb-8 h-8 w-8" />
-            <p className="text-2xl leading-10 text-foreground">A security incident involving unauthorized access to certain internal Vercel systems is being investigated. Follow official Vercel channels for the security bulletin and best-practice updates.</p>
-            <div className="mt-8 grid gap-3 md:grid-cols-2">
-              <a className="flex items-center justify-between border-y border-border py-4 text-muted-foreground transition hover:text-foreground" href="https://x.com/vercel" target="_blank" rel="noreferrer">Vercel Security Bulletin <ExternalLink className="h-4 w-4" /></a>
-              <a className="flex items-center justify-between border-y border-border py-4 text-muted-foreground transition hover:text-foreground" href="https://x.com/rauchg" target="_blank" rel="noreferrer">CEO Statement <ExternalLink className="h-4 w-4" /></a>
-            </div>
-          </div>
-        </div>
-      </Slide>
+      <Slide id="skills"><Label step="06 / Core Skills" title="What the Agent Must Do" /><CardGrid items={agentSkills} compact /></Slide>
+      <Slide id="stack"><Label step="07 / Tools" title="Agent Infrastructure" /><CardGrid items={stack} compact /></Slide>
+      <Slide id="guardrails"><Label step="08 / Safety" title="Make It Trustworthy" /><CardGrid items={guardrails} compact /></Slide>
+      <Slide id="evaluation"><Label step="09 / Evaluation" title="How to Judge the Agent" /><CardGrid items={evaluation} compact /></Slide>
 
       <Slide id="tracks">
-        <Label step="10 / Event Info" title="Choose a Build Track" />
+        <Label step="10 / Project Direction" title="Choose an Agent Type" />
         <div className="grid md:grid-cols-2 lg:grid-cols-4">{tracks.map(({ eyebrow, title, body, Icon }) => <article key={title} className="content-row p-6 transition hover:bg-secondary md:border-r md:border-border"><Icon className="mb-10 h-6 w-6" /><p className="font-mono text-xs uppercase tracking-[0.16em] text-muted-foreground">{eyebrow}</p><h3 className="mt-4 text-3xl font-medium">{title}</h3><p className="mt-4 leading-7 text-muted-foreground">{body}</p></article>)}</div>
       </Slide>
 
-      <Slide id="prizes"><Label step="12 / Rewards" title="Prize Pool" /><CardGrid items={prizes} compact /></Slide>
-      <Slide id="prepare"><Label step="13 / Prepare" title="The Journey" /><CardGrid items={prep} compact /></Slide>
-      <Slide id="schedule"><Label step="15 / Timeline" title="Event Day Schedule" /><div className="divide-y divide-border border-y border-border">{schedule.map((item) => <div key={item.eyebrow} className="grid gap-4 py-7 md:grid-cols-[12rem_1fr]"><p className="font-mono text-sm text-muted-foreground">{item.eyebrow}</p><div><h3 className="text-3xl font-semibold">{item.title}</h3><p className="mt-2 text-muted-foreground">{item.body}</p></div></div>)}</div></Slide>
+      <Slide id="demo"><Label step="11 / Demo" title="What to Present" /><CardGrid items={demo} compact /></Slide>
+      <Slide id="event"><Label step="12 / Event" title="Event Details" /><CardGrid items={details} compact /></Slide>
+      <Slide id="prepare"><Label step="13 / Prepare" title="Before You Build" /><CardGrid items={prep} compact /></Slide>
+      <Slide id="schedule"><Label step="14 / Timeline" title="Build Day Flow" /><div className="divide-y divide-border border-y border-border">{schedule.map((item) => <div key={item.eyebrow} className="grid gap-4 py-7 md:grid-cols-[12rem_1fr]"><p className="font-mono text-sm text-muted-foreground">{item.eyebrow}</p><div><h3 className="text-3xl font-medium">{item.title}</h3><p className="mt-2 text-muted-foreground">{item.body}</p></div></div>)}</div></Slide>
 
       <Slide id="submit">
         <div className="grid gap-10 lg:grid-cols-[1fr_0.9fr] lg:items-center">
-          <div><Label step="16 / Submission" title="Finalize, Submit, Ship" /><p className="max-w-2xl text-xl leading-8 text-muted-foreground">Test the agent, document what it does, prepare a short demo, and submit it through the community page before judging.</p><a href="https://community.vercel.com/hackathons/zero-to-agent" target="_blank" rel="noreferrer" className="mt-10 inline-flex items-center gap-3 rounded-sm bg-primary px-6 py-3 font-semibold text-primary-foreground transition hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">Go to Submission <ArrowUpRight className="h-5 w-5" /></a></div>
+          <div><Label step="15 / Ship" title="Finalize the Agent" /><p className="max-w-2xl text-xl leading-8 text-muted-foreground">Make the agent narrow, reliable, visible, and safe. A simple agent that completes one real job is stronger than a broad demo that cannot be trusted.</p><a href="https://community.vercel.com/hackathons/zero-to-agent" target="_blank" rel="noreferrer" className="mt-10 inline-flex items-center gap-3 rounded-sm bg-primary px-6 py-3 font-semibold text-primary-foreground transition hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">Go to Submission <ArrowUpRight className="h-5 w-5" /></a></div>
            <div className="border-y border-border py-8"><MonitorUp className="mb-8 h-8 w-8" /><h3 className="text-3xl font-medium">Resources You Need</h3><div className="mt-8 grid gap-3">{["AI SDK", "v0 Builder", "Next.js", "Vercel Docs"].map((r) => <div key={r} className="flex items-center justify-between border-b border-border py-4 text-muted-foreground"><span>{r}</span><ArrowUpRight className="h-4 w-4" /></div>)}</div></div>
         </div>
       </Slide>
 
-      <Slide id="faq"><Label step="17 / Questions" title="Why Agents Matter" /><CardGrid items={faq} compact /></Slide>
+      <Slide id="submit"><Label step="16 / Closing" title="Start Small. Make It Act." /><CardGrid items={faq} compact /></Slide>
 
       <div className="fixed bottom-6 right-6 z-50 flex border border-border bg-background/80 backdrop-blur">
         <button aria-label="Previous slide" onClick={() => goTo(-1)} className="border-r border-border p-3 text-muted-foreground transition hover:bg-secondary hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"><ChevronUp className="h-4 w-4" /></button>
