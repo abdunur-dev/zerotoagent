@@ -128,7 +128,7 @@ const Slide = ({ id, children, className = "" }: { id: string; children: React.R
 
 const Index = () => {
   const [active, setActive] = useState(0);
-  const sectionIds = useMemo(() => ["hero", "video", "fundamentals", "anatomy", "build", "agent", "skills", "stack", "guardrails", "evaluation", "tracks", "demo", "event", "prepare", "schedule", "submit"], []);
+  const sectionIds = useMemo(() => ["hero", "video", "fundamentals", "anatomy", "build", "agent", "skills", "stack", "guardrails", "evaluation", "tracks", "demo", "event", "prepare", "schedule", "submit", "closing"], []);
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
@@ -171,7 +171,7 @@ const Index = () => {
         <div className="relative mx-auto flex max-w-6xl animate-fade-up flex-col items-center text-center">
           <span className="triangle-mark mb-12 animate-slow-pulse" aria-hidden="true" />
           <h1 className="font-display text-6xl font-semibold leading-none tracking-normal text-balance md:text-9xl">Zero to Agent</h1>
-          <p className="mt-8 font-mono text-sm uppercase tracking-[0.18em] text-muted-foreground md:text-base">O2A Global Build Week</p>
+          <p className="mt-8 font-mono text-sm uppercase tracking-[0.18em] text-muted-foreground md:text-base">Vercel Team Message · O2A Global Build Week</p>
           <div className="mt-10 flex flex-col items-center divide-border text-lg md:flex-row md:divide-x">
             <span className="flex items-center gap-3 px-6 py-2"><Calendar className="h-5 w-5" /> May 2, 2026</span>
             <span className="flex items-center gap-3 px-6 py-2"><MapPin className="h-5 w-5" /> Addis Ababa, Ethiopia</span>
@@ -182,9 +182,9 @@ const Index = () => {
 
       <Slide id="video">
         <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
-          <div><Label step="01 / Introduction" title="From Prompt to Agent" /><p className="max-w-xl text-xl leading-8 text-muted-foreground">Start with the core idea: an agent is software that can understand a goal, choose actions, use tools, and verify the result.</p></div>
+          <div><Label step="01 / Vercel Message" title="Zero to Agent Starts Here" /><p className="max-w-xl text-xl leading-8 text-muted-foreground">Begin with the Vercel team message for the event. The focus is clear: move from simple prompts to agents that can plan, use tools, act safely, and ship real work.</p></div>
           <div className="overflow-hidden border-y border-border bg-card">
-            <iframe className="aspect-video w-full" src="https://www.youtube-nocookie.com/embed/r9hB_CQQIMk?rel=0&modestbranding=1" title="Zero to Agent welcome video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen />
+            <iframe className="aspect-video w-full" src="https://www.youtube-nocookie.com/embed/r9hB_CQQIMk?rel=0&modestbranding=1" title="Vercel team message for Zero to Agent" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen />
           </div>
         </div>
       </Slide>
@@ -215,7 +215,7 @@ const Index = () => {
         </div>
       </Slide>
 
-      <Slide id="submit"><Label step="16 / Closing" title="Start Small. Make It Act." /><CardGrid items={faq} compact /></Slide>
+      <Slide id="closing"><Label step="16 / Closing" title="Start Small. Make It Act." /><CardGrid items={faq} compact /></Slide>
 
       <div className="fixed bottom-6 right-6 z-50 flex border border-border bg-background/80 backdrop-blur">
         <button aria-label="Previous slide" onClick={() => goTo(-1)} className="border-r border-border p-3 text-muted-foreground transition hover:bg-secondary hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"><ChevronUp className="h-4 w-4" /></button>
