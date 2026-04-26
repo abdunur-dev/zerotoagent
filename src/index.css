@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Pixelify+Sans:wght@500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -169,5 +169,17 @@ All colors MUST be HSL.
 
   .text-balance {
     text-wrap: balance;
+  }
+
+  .hero-pixel-word {
+    font-family: "Pixelify Sans", var(--font-mono);
+    letter-spacing: 0;
+    text-shadow: 0.08em 0 hsl(var(--background)), -0.08em 0 hsl(var(--background)), 0 0.08em hsl(var(--background)), 0 -0.08em hsl(var(--background));
+    image-rendering: pixelated;
+  }
+
+  .hero-pixel-word::selection {
+    background: hsl(var(--foreground));
+    color: hsl(var(--background));
   }
 }
