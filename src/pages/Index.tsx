@@ -116,24 +116,24 @@ const participantCreditUrl = "https://zerotoagent.dev/event/p9k8Y4A3E7dKFCEe";
 const Label = ({ step, title }: { step: string; title: string }) => (
   <header className="mb-6 md:mb-12">
     <p className="font-mono text-xs uppercase tracking-[0.18em] text-muted-foreground">{step}</p>
-    <h2 className="mt-4 max-w-5xl font-display text-3xl font-semibold leading-tight tracking-normal text-balance sm:text-4xl md:mt-5 md:text-7xl md:leading-none">{title}</h2>
+    <h2 className="mt-4 max-w-5xl font-display text-2xl font-semibold leading-tight tracking-normal text-balance sm:text-3xl md:mt-5 md:text-7xl md:leading-none">{title}</h2>
   </header>
 );
 
 const CardGrid = ({ items, compact = false }: { items: Card[]; compact?: boolean }) => (
-  <div className={`grid ${compact ? "md:grid-cols-4" : "md:grid-cols-2 lg:grid-cols-4"}`}>
+  <div className={`grid ${compact ? "sm:grid-cols-2 md:grid-cols-4" : "sm:grid-cols-2 lg:grid-cols-4"}`}>
     {items.map((item) => (
-      <article key={`${item.eyebrow}-${item.title}`} className="content-row p-6 transition duration-300 hover:bg-secondary md:border-r md:border-border">
+      <article key={`${item.eyebrow}-${item.title}`} className="content-row p-4 transition duration-300 hover:bg-secondary md:border-r md:border-border md:p-6">
         <p className="font-mono text-xs uppercase tracking-[0.16em] text-muted-foreground">{item.eyebrow}</p>
-        <h3 className="mt-6 text-xl font-medium tracking-normal md:mt-8 md:text-3xl">{item.title}</h3>
-        <p className="mt-3 text-sm leading-6 text-muted-foreground md:mt-4 md:text-base md:leading-7">{item.body}</p>
+        <h3 className="mt-4 text-lg font-medium tracking-normal md:mt-8 md:text-3xl">{item.title}</h3>
+        <p className="mt-2 text-sm leading-6 text-muted-foreground md:mt-4 md:text-base md:leading-7">{item.body}</p>
       </article>
     ))}
   </div>
 );
 
 const Slide = ({ id, children, className = "" }: { id: string; children: React.ReactNode; className?: string }) => (
-  <section id={id} className={`slide-shell flex items-center border-t border-border px-5 py-16 md:px-10 md:py-24 ${className}`}>
+  <section id={id} className={`slide-shell flex items-start border-t border-border px-5 pb-12 pt-20 md:items-center md:px-10 md:py-24 ${className}`}>
     <div className="mx-auto w-full max-w-7xl animate-fade-up">{children}</div>
   </section>
 );
