@@ -182,7 +182,7 @@ const Index = () => {
         <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-background to-transparent" />
         <div className="relative mx-auto flex max-w-6xl animate-fade-up flex-col items-center text-center">
           <span className="triangle-mark mb-12 animate-slow-pulse" aria-hidden="true" />
-          <h1 className="font-display text-6xl font-semibold leading-none tracking-normal text-balance md:text-9xl">Zero to Agent</h1>
+          <h1 className="font-display text-6xl font-semibold leading-none tracking-normal text-balance md:text-9xl">Zero to <span className="hero-pixel-word">Agent</span></h1>
           <p className="mt-8 font-mono text-sm uppercase tracking-[0.18em] text-muted-foreground md:text-base">Vercel Team Message · O2A Global Build Week</p>
           <div className="mt-10 flex flex-col items-center divide-border text-lg md:flex-row md:divide-x">
             <span className="flex items-center gap-3 px-6 py-2"><Calendar className="h-5 w-5" /> May 2, 2026</span>
