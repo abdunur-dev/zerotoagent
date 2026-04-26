@@ -1,5 +1,5 @@
 import { ArrowUpRight, Calendar, ChevronDown, ChevronUp, Code2, Cpu, ExternalLink, Globe2, MapPin, MonitorUp, ShieldCheck, Sparkles, Trophy, Workflow } from "lucide-react";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 type Card = { eyebrow: string; title: string; body: string };
 
@@ -114,6 +114,20 @@ const Slide = ({ id, children, className = "" }: { id: string; children: React.R
 const Index = () => {
   const [active, setActive] = useState(0);
   const sectionIds = useMemo(() => ["hero", "video", "learn", "v0", "build", "agent", "why", "stack", "event", "security", "tracks", "prizes", "prepare", "schedule", "submit", "faq"], []);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      const visible = entries.find((entry) => entry.isIntersecting);
+      if (visible) setActive(sectionIds.indexOf(visible.target.id));
+    }, { threshold: 0.62 });
+
+    sectionIds.forEach((id) => {
+      const node = document.getElementById(id);
+      if (node) observer.observe(node);
+    });
+
+    return () => observer.disconnect();
+  }, [sectionIds]);
 
   const goTo = (direction: number) => {
     const next = Math.max(0, Math.min(sectionIds.length - 1, active + direction));
