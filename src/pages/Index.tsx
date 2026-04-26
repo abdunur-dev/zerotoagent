@@ -3,24 +3,25 @@ import { useEffect, useMemo, useState } from "react";
 
 type Card = { eyebrow: string; title: string; body: string };
 
-const learn: Card[] = [
-  { eyebrow: "Learn", title: "Build AI Agents", body: "Master autonomous systems that perceive context, decide next steps, and act through tools." },
-  { eyebrow: "Create", title: "Production Ready", body: "Move beyond demos into applications that handle real tasks at useful scale." },
-  { eyebrow: "Compete", title: "Global Hackathon", body: "Build with developers across 10+ cities and submit for recognition and prizes." },
+const fundamentals: Card[] = [
+  { eyebrow: "Goal", title: "From Prompt to Worker", body: "An agent is not just a chatbot. It receives a goal, reasons about the task, uses tools, and returns finished work." },
+  { eyebrow: "Input", title: "Context First", body: "Good agents start with documents, user intent, product data, rules, constraints, and success criteria." },
+  { eyebrow: "Output", title: "Useful Action", body: "The best result is not a long answer. It is a completed workflow, a decision, a file, an update, or a deployed change." },
+  { eyebrow: "Mindset", title: "Small Autonomy", body: "Start with one repeatable task, make it reliable, then expand its permissions and tool access." },
 ];
 
-const v0Tools: Card[] = [
-  { eyebrow: "Generate", title: "UIs in Seconds", body: "Describe the interface you need and get production-ready React components." },
-  { eyebrow: "Code", title: "AI Suggestions", body: "Use intelligent completions and refactoring while your agent takes shape." },
-  { eyebrow: "Design", title: "System Ready", body: "Work with component libraries, variants, and design tokens from the start." },
-  { eyebrow: "Deploy", title: "One Click", body: "Ship the finished app to a global edge network when the build is ready." },
+const anatomy: Card[] = [
+  { eyebrow: "01", title: "Model", body: "The reasoning layer that interprets goals, plans steps, and decides when to call tools." },
+  { eyebrow: "02", title: "Tools", body: "Functions, APIs, databases, calendars, files, search, code, and MCP servers the agent can operate." },
+  { eyebrow: "03", title: "Memory", body: "Durable context such as preferences, project facts, previous runs, and long-term task state." },
+  { eyebrow: "04", title: "Guardrails", body: "Rules that limit risky behavior, validate outputs, and require human approval when needed." },
 ];
 
-const steps: Card[] = [
-  { eyebrow: "01", title: "Agent Logic", body: "Use AI SDK to wire models, tools, structured output, and reasoning loops." },
-  { eyebrow: "02", title: "Build UI", body: "Generate dashboards, chat screens, controls, and review flows with v0." },
-  { eyebrow: "03", title: "Add MCPs", body: "Connect tools, APIs, files, calendars, CRMs, or databases through MCP servers." },
-  { eyebrow: "04", title: "Deploy", body: "Publish, test live behavior, demo the product, and submit it for judging." },
+const buildPlan: Card[] = [
+  { eyebrow: "Step 1", title: "Pick One Job", body: "Choose a painful workflow: triage support, research leads, summarize docs, schedule tasks, or generate reports." },
+  { eyebrow: "Step 2", title: "Define Done", body: "Write the exact output format, required evidence, failure cases, and what the agent must never do." },
+  { eyebrow: "Step 3", title: "Wire Tools", body: "Give the agent only the tools it needs. Every tool should have clear inputs, outputs, and permissions." },
+  { eyebrow: "Step 4", title: "Test Runs", body: "Run real scenarios, inspect traces, fix prompts and schemas, then repeat until the behavior is predictable." },
 ];
 
 const agentLoop: Card[] = [
@@ -30,18 +31,32 @@ const agentLoop: Card[] = [
   { eyebrow: "04", title: "Learn", body: "Adapt from feedback, logs, tests, and real-world outcomes." },
 ];
 
-const why: Card[] = [
-  { eyebrow: "Why", title: "Automate Work", body: "Build systems that operate 24/7 without waiting for manual handoffs." },
-  { eyebrow: "Why", title: "Scale Impact", body: "Solve painful problems for millions instead of a small internal team." },
-  { eyebrow: "Why", title: "Real Products", body: "Turn a prototype into a durable, deployed, user-facing application." },
-  { eyebrow: "Why", title: "Compete Global", body: "Earn visibility from builders, teams, and the Vercel community." },
+const agentSkills: Card[] = [
+  { eyebrow: "Plan", title: "Break Down Work", body: "Turn a vague request into ordered steps with checkpoints and stopping conditions." },
+  { eyebrow: "Retrieve", title: "Use Knowledge", body: "Search project docs, product data, files, policies, and previous decisions before acting." },
+  { eyebrow: "Act", title: "Call Tools", body: "Create tickets, update records, write code, send messages, run checks, and produce artifacts." },
+  { eyebrow: "Reflect", title: "Verify Results", body: "Compare output against the goal, catch errors, ask for help, and retry safely." },
 ];
 
 const stack: Card[] = [
-  { eyebrow: "AI SDK", title: "Models + Tools", body: "Streaming, tool calling, structured outputs, and agent patterns." },
-  { eyebrow: "MCP", title: "External Context", body: "Connect agents to tools, APIs, and business systems." },
-  { eyebrow: "Workflows", title: "Durable Runs", body: "Long-running background agents with retries and reliability." },
-  { eyebrow: "v0", title: "Instant UI", body: "Natural-language interface generation for the product layer." },
+  { eyebrow: "AI SDK", title: "Reasoning + Tools", body: "Model calls, streaming responses, structured output, and type-safe tool calling." },
+  { eyebrow: "MCP", title: "Tool Connectors", body: "A standard way for agents to reach files, services, databases, search, and internal systems." },
+  { eyebrow: "Workflows", title: "Reliable Runs", body: "Durable background execution for tasks that take time, fail, retry, or need state." },
+  { eyebrow: "UI", title: "Human Control", body: "Review screens, approvals, logs, settings, and visibility into what the agent is doing." },
+];
+
+const guardrails: Card[] = [
+  { eyebrow: "Scope", title: "Least Privilege", body: "Give the agent narrow permissions. It should only access what the task requires." },
+  { eyebrow: "Approval", title: "Human in the Loop", body: "Require confirmation for payments, deletes, public posts, emails, and irreversible actions." },
+  { eyebrow: "Validation", title: "Structured Checks", body: "Use schemas, tests, required citations, and output validation before accepting results." },
+  { eyebrow: "Logs", title: "Trace Everything", body: "Record prompts, tool calls, decisions, failures, and final outputs so behavior can be reviewed." },
+];
+
+const evaluation: Card[] = [
+  { eyebrow: "Quality", title: "Task Success", body: "Did it complete the job accurately without hidden manual work?" },
+  { eyebrow: "Speed", title: "Time Saved", body: "Does the agent reduce minutes, clicks, meetings, or handoffs?" },
+  { eyebrow: "Trust", title: "Explainability", body: "Can a user understand why the agent made each important decision?" },
+  { eyebrow: "Reliability", title: "Failure Handling", body: "Does it stop safely, recover cleanly, and ask for help when uncertain?" },
 ];
 
 const details: Card[] = [
@@ -52,17 +67,17 @@ const details: Card[] = [
 ];
 
 const tracks = [
-  { eyebrow: "Track 1", title: "Workflows", body: "Durable async agents for long-running tasks.", Icon: Workflow },
-  { eyebrow: "Track 2", title: "v0 + MCPs", body: "UI-first agents connected to useful tools.", Icon: Code2 },
-  { eyebrow: "Track 3", title: "ChatSDK Agents", body: "Slack, Discord, Teams, and real-time chat products.", Icon: Cpu },
-  { eyebrow: "All Tracks", title: "Open to All", body: "Pick the path that fits your skill and idea.", Icon: Globe2 },
+  { eyebrow: "Track 1", title: "Personal Agent", body: "An assistant that manages an individual workflow end-to-end.", Icon: Workflow },
+  { eyebrow: "Track 2", title: "Business Agent", body: "A reliable operator for support, sales, finance, hiring, or operations.", Icon: Code2 },
+  { eyebrow: "Track 3", title: "Developer Agent", body: "A coding or DevOps helper that reads context, edits, tests, and reports.", Icon: Cpu },
+  { eyebrow: "Track 4", title: "Research Agent", body: "A system that gathers evidence, compares sources, and produces decisions.", Icon: Globe2 },
 ];
 
-const prizes: Card[] = [
-  { eyebrow: "01st Place", title: "$3,000", body: "Vercel credits + featured on all channels." },
-  { eyebrow: "02nd Place", title: "$2,000", body: "Vercel credits + community recognition." },
-  { eyebrow: "03rd Place", title: "$1,000", body: "Credits + Vercel Pro for one year." },
-  { eyebrow: "All", title: "Portfolio", body: "Showcase your work globally." },
+const demo: Card[] = [
+  { eyebrow: "Show", title: "The Problem", body: "Explain the painful workflow and who experiences it." },
+  { eyebrow: "Prove", title: "Agent Autonomy", body: "Show the agent planning, using tools, and completing real actions." },
+  { eyebrow: "Trust", title: "Safety Layer", body: "Show approvals, logs, constraints, and how failures are handled." },
+  { eyebrow: "Impact", title: "Before / After", body: "Quantify time saved, quality improved, or work unlocked." },
 ];
 
 const prep: Card[] = [
@@ -113,7 +128,7 @@ const Slide = ({ id, children, className = "" }: { id: string; children: React.R
 
 const Index = () => {
   const [active, setActive] = useState(0);
-  const sectionIds = useMemo(() => ["hero", "video", "learn", "v0", "build", "agent", "why", "stack", "event", "security", "tracks", "prizes", "prepare", "schedule", "submit", "faq"], []);
+  const sectionIds = useMemo(() => ["hero", "video", "fundamentals", "anatomy", "build", "agent", "skills", "stack", "guardrails", "evaluation", "tracks", "demo", "event", "prepare", "schedule", "submit"], []);
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
@@ -161,58 +176,46 @@ const Index = () => {
             <span className="flex items-center gap-3 px-6 py-2"><Calendar className="h-5 w-5" /> May 2, 2026</span>
             <span className="flex items-center gap-3 px-6 py-2"><MapPin className="h-5 w-5" /> Addis Ababa, Ethiopia</span>
           </div>
-          <p className="mt-12 max-w-3xl text-xl leading-8 text-muted-foreground text-balance">Build AI agents that solve real problems. Learn from the Vercel team and global builders. Ship something useful and compete for real prizes.</p>
+          <p className="mt-12 max-w-3xl text-xl leading-8 text-muted-foreground text-balance">A focused journey from basic prompt to reliable AI agent: context, tools, memory, safety, evaluation, and shipping.</p>
         </div>
       </section>
 
       <Slide id="video">
         <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
-          <div><Label step="01 / Introduction" title="Welcome Message" /><p className="max-w-xl text-xl leading-8 text-muted-foreground">Watch the kickoff directly inside the deck, then move slide-by-slide through the build plan.</p></div>
+          <div><Label step="01 / Introduction" title="From Prompt to Agent" /><p className="max-w-xl text-xl leading-8 text-muted-foreground">Start with the core idea: an agent is software that can understand a goal, choose actions, use tools, and verify the result.</p></div>
           <div className="overflow-hidden border-y border-border bg-card">
             <iframe className="aspect-video w-full" src="https://www.youtube-nocookie.com/embed/r9hB_CQQIMk?rel=0&modestbranding=1" title="Zero to Agent welcome video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen />
           </div>
         </div>
       </Slide>
 
-      <Slide id="learn"><Label step="02 / Learning" title="What is Zero to Agent?" /><CardGrid items={learn} /></Slide>
-      <Slide id="v0"><Label step="03 / Tools" title="How v0 Powers Your Agent" /><CardGrid items={v0Tools} /></Slide>
-      <Slide id="build"><Label step="04 / Development" title="How to Build Your Agent" /><CardGrid items={steps} compact /></Slide>
+      <Slide id="fundamentals"><Label step="02 / Foundation" title="What Makes an Agent?" /><CardGrid items={fundamentals} compact /></Slide>
+      <Slide id="anatomy"><Label step="03 / Anatomy" title="The Parts of an Agent" /><CardGrid items={anatomy} compact /></Slide>
+      <Slide id="build"><Label step="04 / Build Plan" title="Zero to Working Agent" /><CardGrid items={buildPlan} compact /></Slide>
       <Slide id="agent"><Label step="05 / What Is" title="The Agent Loop" /><CardGrid items={agentLoop} compact /></Slide>
-      <Slide id="why"><Label step="06 / Why Agents" title="The Future is Autonomous" /><CardGrid items={why} compact /></Slide>
-      <Slide id="stack"><Label step="08 / Tools" title="Your Tech Stack" /><CardGrid items={stack} compact /></Slide>
-      <Slide id="event"><Label step="09 / Event" title="Event Details" /><CardGrid items={details} compact /></Slide>
-
-      <Slide id="security">
-        <div className="grid gap-10 lg:grid-cols-[0.7fr_1.3fr] lg:items-center">
-          <Label step="08 / Important" title="Security Notice" />
-          <div className="border-y border-border py-8">
-            <ShieldCheck className="mb-8 h-8 w-8" />
-            <p className="text-2xl leading-10 text-foreground">A security incident involving unauthorized access to certain internal Vercel systems is being investigated. Follow official Vercel channels for the security bulletin and best-practice updates.</p>
-            <div className="mt-8 grid gap-3 md:grid-cols-2">
-              <a className="flex items-center justify-between border-y border-border py-4 text-muted-foreground transition hover:text-foreground" href="https://x.com/vercel" target="_blank" rel="noreferrer">Vercel Security Bulletin <ExternalLink className="h-4 w-4" /></a>
-              <a className="flex items-center justify-between border-y border-border py-4 text-muted-foreground transition hover:text-foreground" href="https://x.com/rauchg" target="_blank" rel="noreferrer">CEO Statement <ExternalLink className="h-4 w-4" /></a>
-            </div>
-          </div>
-        </div>
-      </Slide>
+      <Slide id="skills"><Label step="06 / Core Skills" title="What the Agent Must Do" /><CardGrid items={agentSkills} compact /></Slide>
+      <Slide id="stack"><Label step="07 / Tools" title="Agent Infrastructure" /><CardGrid items={stack} compact /></Slide>
+      <Slide id="guardrails"><Label step="08 / Safety" title="Make It Trustworthy" /><CardGrid items={guardrails} compact /></Slide>
+      <Slide id="evaluation"><Label step="09 / Evaluation" title="How to Judge the Agent" /><CardGrid items={evaluation} compact /></Slide>
 
       <Slide id="tracks">
-        <Label step="10 / Event Info" title="Choose a Build Track" />
+        <Label step="10 / Project Direction" title="Choose an Agent Type" />
         <div className="grid md:grid-cols-2 lg:grid-cols-4">{tracks.map(({ eyebrow, title, body, Icon }) => <article key={title} className="content-row p-6 transition hover:bg-secondary md:border-r md:border-border"><Icon className="mb-10 h-6 w-6" /><p className="font-mono text-xs uppercase tracking-[0.16em] text-muted-foreground">{eyebrow}</p><h3 className="mt-4 text-3xl font-medium">{title}</h3><p className="mt-4 leading-7 text-muted-foreground">{body}</p></article>)}</div>
       </Slide>
 
-      <Slide id="prizes"><Label step="12 / Rewards" title="Prize Pool" /><CardGrid items={prizes} compact /></Slide>
-      <Slide id="prepare"><Label step="13 / Prepare" title="The Journey" /><CardGrid items={prep} compact /></Slide>
-      <Slide id="schedule"><Label step="15 / Timeline" title="Event Day Schedule" /><div className="divide-y divide-border border-y border-border">{schedule.map((item) => <div key={item.eyebrow} className="grid gap-4 py-7 md:grid-cols-[12rem_1fr]"><p className="font-mono text-sm text-muted-foreground">{item.eyebrow}</p><div><h3 className="text-3xl font-semibold">{item.title}</h3><p className="mt-2 text-muted-foreground">{item.body}</p></div></div>)}</div></Slide>
+      <Slide id="demo"><Label step="11 / Demo" title="What to Present" /><CardGrid items={demo} compact /></Slide>
+      <Slide id="event"><Label step="12 / Event" title="Event Details" /><CardGrid items={details} compact /></Slide>
+      <Slide id="prepare"><Label step="13 / Prepare" title="Before You Build" /><CardGrid items={prep} compact /></Slide>
+      <Slide id="schedule"><Label step="14 / Timeline" title="Build Day Flow" /><div className="divide-y divide-border border-y border-border">{schedule.map((item) => <div key={item.eyebrow} className="grid gap-4 py-7 md:grid-cols-[12rem_1fr]"><p className="font-mono text-sm text-muted-foreground">{item.eyebrow}</p><div><h3 className="text-3xl font-medium">{item.title}</h3><p className="mt-2 text-muted-foreground">{item.body}</p></div></div>)}</div></Slide>
 
       <Slide id="submit">
         <div className="grid gap-10 lg:grid-cols-[1fr_0.9fr] lg:items-center">
-          <div><Label step="16 / Submission" title="Finalize, Submit, Ship" /><p className="max-w-2xl text-xl leading-8 text-muted-foreground">Test the agent, document what it does, prepare a short demo, and submit it through the community page before judging.</p><a href="https://community.vercel.com/hackathons/zero-to-agent" target="_blank" rel="noreferrer" className="mt-10 inline-flex items-center gap-3 rounded-sm bg-primary px-6 py-3 font-semibold text-primary-foreground transition hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">Go to Submission <ArrowUpRight className="h-5 w-5" /></a></div>
+          <div><Label step="15 / Ship" title="Finalize the Agent" /><p className="max-w-2xl text-xl leading-8 text-muted-foreground">Make the agent narrow, reliable, visible, and safe. A simple agent that completes one real job is stronger than a broad demo that cannot be trusted.</p><a href="https://community.vercel.com/hackathons/zero-to-agent" target="_blank" rel="noreferrer" className="mt-10 inline-flex items-center gap-3 rounded-sm bg-primary px-6 py-3 font-semibold text-primary-foreground transition hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">Go to Submission <ArrowUpRight className="h-5 w-5" /></a></div>
            <div className="border-y border-border py-8"><MonitorUp className="mb-8 h-8 w-8" /><h3 className="text-3xl font-medium">Resources You Need</h3><div className="mt-8 grid gap-3">{["AI SDK", "v0 Builder", "Next.js", "Vercel Docs"].map((r) => <div key={r} className="flex items-center justify-between border-b border-border py-4 text-muted-foreground"><span>{r}</span><ArrowUpRight className="h-4 w-4" /></div>)}</div></div>
         </div>
       </Slide>
 
-      <Slide id="faq"><Label step="17 / Questions" title="Why Agents Matter" /><CardGrid items={faq} compact /></Slide>
+      <Slide id="submit"><Label step="16 / Closing" title="Start Small. Make It Act." /><CardGrid items={faq} compact /></Slide>
 
       <div className="fixed bottom-6 right-6 z-50 flex border border-border bg-background/80 backdrop-blur">
         <button aria-label="Previous slide" onClick={() => goTo(-1)} className="border-r border-border p-3 text-muted-foreground transition hover:bg-secondary hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"><ChevronUp className="h-4 w-4" /></button>
