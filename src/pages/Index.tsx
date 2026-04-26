@@ -116,24 +116,24 @@ const participantCreditUrl = "https://zerotoagent.dev/event/p9k8Y4A3E7dKFCEe";
 const Label = ({ step, title }: { step: string; title: string }) => (
   <header className="mb-6 md:mb-12">
     <p className="font-mono text-xs uppercase tracking-[0.18em] text-muted-foreground">{step}</p>
-    <h2 className="mt-4 max-w-5xl font-display text-3xl font-semibold leading-tight tracking-normal text-balance sm:text-4xl md:mt-5 md:text-7xl md:leading-none">{title}</h2>
+    <h2 className="mt-4 max-w-5xl font-display text-2xl font-semibold leading-tight tracking-normal text-balance sm:text-3xl md:mt-5 md:text-7xl md:leading-none">{title}</h2>
   </header>
 );
 
 const CardGrid = ({ items, compact = false }: { items: Card[]; compact?: boolean }) => (
-  <div className={`grid ${compact ? "md:grid-cols-4" : "md:grid-cols-2 lg:grid-cols-4"}`}>
+  <div className={`grid ${compact ? "sm:grid-cols-2 md:grid-cols-4" : "sm:grid-cols-2 lg:grid-cols-4"}`}>
     {items.map((item) => (
-      <article key={`${item.eyebrow}-${item.title}`} className="content-row p-6 transition duration-300 hover:bg-secondary md:border-r md:border-border">
+      <article key={`${item.eyebrow}-${item.title}`} className="content-row p-4 transition duration-300 hover:bg-secondary md:border-r md:border-border md:p-6">
         <p className="font-mono text-xs uppercase tracking-[0.16em] text-muted-foreground">{item.eyebrow}</p>
-        <h3 className="mt-6 text-xl font-medium tracking-normal md:mt-8 md:text-3xl">{item.title}</h3>
-        <p className="mt-3 text-sm leading-6 text-muted-foreground md:mt-4 md:text-base md:leading-7">{item.body}</p>
+        <h3 className="mt-4 text-lg font-medium tracking-normal md:mt-8 md:text-3xl">{item.title}</h3>
+        <p className="mt-2 text-sm leading-6 text-muted-foreground md:mt-4 md:text-base md:leading-7">{item.body}</p>
       </article>
     ))}
   </div>
 );
 
 const Slide = ({ id, children, className = "" }: { id: string; children: React.ReactNode; className?: string }) => (
-  <section id={id} className={`slide-shell flex items-center border-t border-border px-5 py-16 md:px-10 md:py-24 ${className}`}>
+  <section id={id} className={`slide-shell flex items-start border-t border-border px-5 pb-12 pt-20 md:items-center md:px-10 md:py-24 ${className}`}>
     <div className="mx-auto w-full max-w-7xl animate-fade-up">{children}</div>
   </section>
 );
@@ -194,7 +194,7 @@ const Index = () => {
 
       <Slide id="video">
         <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
-          <div><Label step="01 / Vercel Message" title="Zero to Agent Starts Here" /><p className="max-w-xl text-xl leading-8 text-muted-foreground">Begin with the Vercel team message for the event. The focus is clear: move from simple prompts to agents that can plan, use tools, act safely, and ship real work.</p></div>
+          <div><Label step="01 / Vercel Message" title="Zero to Agent Starts Here" /><p className="max-w-xl text-sm leading-6 text-muted-foreground md:text-xl md:leading-8">Begin with the Vercel team message for the event. The focus is clear: move from simple prompts to agents that can plan, use tools, act safely, and ship real work.</p></div>
           <div className="overflow-hidden border-y border-border bg-card">
             <iframe className="aspect-video w-full" src="https://www.youtube-nocookie.com/embed/r9hB_CQQIMk?rel=0&modestbranding=1" title="Vercel team message for Zero to Agent" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen />
           </div>
@@ -212,22 +212,22 @@ const Index = () => {
 
       <Slide id="tracks">
         <Label step="10 / Project Direction" title="Choose an Agent Type" />
-        <div className="grid md:grid-cols-2 lg:grid-cols-4">{tracks.map(({ eyebrow, title, body, Icon }) => <article key={title} className="content-row p-6 transition hover:bg-secondary md:border-r md:border-border"><Icon className="mb-10 h-6 w-6" /><p className="font-mono text-xs uppercase tracking-[0.16em] text-muted-foreground">{eyebrow}</p><h3 className="mt-4 text-3xl font-medium">{title}</h3><p className="mt-4 leading-7 text-muted-foreground">{body}</p></article>)}</div>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4">{tracks.map(({ eyebrow, title, body, Icon }) => <article key={title} className="content-row p-4 transition hover:bg-secondary md:border-r md:border-border md:p-6"><Icon className="mb-5 h-5 w-5 md:mb-10 md:h-6 md:w-6" /><p className="font-mono text-xs uppercase tracking-[0.16em] text-muted-foreground">{eyebrow}</p><h3 className="mt-3 text-lg font-medium md:mt-4 md:text-3xl">{title}</h3><p className="mt-2 text-sm leading-6 text-muted-foreground md:mt-4 md:text-base md:leading-7">{body}</p></article>)}</div>
       </Slide>
 
       <Slide id="demo"><Label step="11 / Demo" title="What to Present" /><CardGrid items={demo} compact /></Slide>
       <Slide id="resources">
         <Label step="12 / Resources" title="Path From Zero to Shipped" />
-        <div className="grid border-y border-border md:grid-cols-4">
+        <div className="grid border-y border-border sm:grid-cols-2 md:grid-cols-4">
           {resources.map((item, index) => (
-            <article key={item.title} className="content-row flex min-h-[22rem] flex-col p-6 transition duration-300 hover:bg-secondary md:border-r md:border-border">
+            <article key={item.title} className="content-row flex flex-col p-4 transition duration-300 hover:bg-secondary md:min-h-[22rem] md:border-r md:border-border md:p-6">
               <div className="flex items-center justify-between gap-6">
                 <p className="font-mono text-xs uppercase tracking-[0.16em] text-muted-foreground">{item.eyebrow}</p>
                 <ExternalLink className="h-4 w-4 text-muted-foreground" />
               </div>
-              <h3 className="mt-12 text-3xl font-medium leading-tight tracking-normal">{item.title}</h3>
-              <p className="mt-5 leading-7 text-muted-foreground">{item.body}</p>
-              <p className="mt-auto pt-10 font-mono text-xs uppercase tracking-[0.16em] text-muted-foreground">{resourceLinks[index]}</p>
+              <h3 className="mt-5 text-lg font-medium leading-tight tracking-normal md:mt-12 md:text-3xl">{item.title}</h3>
+              <p className="mt-2 text-sm leading-6 text-muted-foreground md:mt-5 md:text-base md:leading-7">{item.body}</p>
+              <p className="mt-auto pt-5 font-mono text-xs uppercase tracking-[0.16em] text-muted-foreground md:pt-10">{resourceLinks[index]}</p>
             </article>
           ))}
         </div>
@@ -236,15 +236,15 @@ const Index = () => {
 
       <Slide id="credit">
         <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-          <div><Label step="14 / Participant Credit" title="Scan for v0 Credits" /><p className="max-w-2xl text-xl leading-8 text-muted-foreground">Participants should scan this code to open the Zero to Agent event page and claim their v0 credit from the Vercel team.</p><a href={participantCreditUrl} target="_blank" rel="noreferrer" className="mt-8 inline-flex items-center gap-3 border-b border-border pb-2 font-mono text-sm text-muted-foreground transition hover:text-foreground"><QrCode className="h-4 w-4" /> Open credit page <ArrowUpRight className="h-4 w-4" /></a></div>
-          <div className="flex justify-center border-y border-border py-8"><img src={v0CreditQr} alt="QR code for participants to claim v0 credits" className="aspect-square w-full max-w-md bg-foreground p-5" /></div>
+          <div><Label step="14 / Participant Credit" title="Scan for v0 Credits" /><p className="max-w-2xl text-sm leading-6 text-muted-foreground md:text-xl md:leading-8">Participants should scan this code to open the Zero to Agent event page and claim their v0 credit from the Vercel team.</p><a href={participantCreditUrl} target="_blank" rel="noreferrer" className="mt-6 inline-flex items-center gap-3 border-b border-border pb-2 font-mono text-xs text-muted-foreground transition hover:text-foreground md:mt-8 md:text-sm"><QrCode className="h-4 w-4" /> Open credit page <ArrowUpRight className="h-4 w-4" /></a></div>
+          <div className="flex justify-center border-y border-border py-6 md:py-8"><img src={v0CreditQr} alt="QR code for participants to claim v0 credits" className="aspect-square w-full max-w-[16rem] bg-foreground p-4 md:max-w-md md:p-5" /></div>
         </div>
       </Slide>
 
       <Slide id="submit">
         <div className="grid gap-10 lg:grid-cols-[1fr_0.9fr] lg:items-center">
-          <div><Label step="15 / Ship" title="Finalize the Agent" /><p className="max-w-2xl text-xl leading-8 text-muted-foreground">Make the agent narrow, reliable, visible, and safe. A simple agent that completes one real job is stronger than a broad demo that cannot be trusted.</p><a href="https://community.vercel.com/hackathons/zero-to-agent" target="_blank" rel="noreferrer" className="mt-10 inline-flex items-center gap-3 rounded-sm bg-primary px-6 py-3 font-semibold text-primary-foreground transition hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">Go to Submission <ArrowUpRight className="h-5 w-5" /></a></div>
-           <div className="border-y border-border py-8"><MonitorUp className="mb-8 h-8 w-8" /><h3 className="text-3xl font-medium">Resources You Need</h3><div className="mt-8 grid gap-3">{["AI SDK", "v0 Builder", "Next.js", "Vercel Docs"].map((r) => <div key={r} className="flex items-center justify-between border-b border-border py-4 text-muted-foreground"><span>{r}</span><ArrowUpRight className="h-4 w-4" /></div>)}</div></div>
+          <div><Label step="15 / Ship" title="Finalize the Agent" /><p className="max-w-2xl text-sm leading-6 text-muted-foreground md:text-xl md:leading-8">Make the agent narrow, reliable, visible, and safe. A simple agent that completes one real job is stronger than a broad demo that cannot be trusted.</p><a href="https://community.vercel.com/hackathons/zero-to-agent" target="_blank" rel="noreferrer" className="mt-7 inline-flex items-center gap-3 rounded-sm bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground transition hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring md:mt-10 md:px-6 md:text-base">Go to Submission <ArrowUpRight className="h-5 w-5" /></a></div>
+           <div className="border-y border-border py-6 md:py-8"><MonitorUp className="mb-5 h-6 w-6 md:mb-8 md:h-8 md:w-8" /><h3 className="text-xl font-medium md:text-3xl">Resources You Need</h3><div className="mt-5 grid gap-2 md:mt-8 md:gap-3">{["AI SDK", "v0 Builder", "Next.js", "Vercel Docs"].map((r) => <div key={r} className="flex items-center justify-between border-b border-border py-3 text-sm text-muted-foreground md:py-4 md:text-base"><span>{r}</span><ArrowUpRight className="h-4 w-4" /></div>)}</div></div>
         </div>
       </Slide>
 
