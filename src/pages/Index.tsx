@@ -3,24 +3,25 @@ import { useEffect, useMemo, useState } from "react";
 
 type Card = { eyebrow: string; title: string; body: string };
 
-const learn: Card[] = [
-  { eyebrow: "Learn", title: "Build AI Agents", body: "Master autonomous systems that perceive context, decide next steps, and act through tools." },
-  { eyebrow: "Create", title: "Production Ready", body: "Move beyond demos into applications that handle real tasks at useful scale." },
-  { eyebrow: "Compete", title: "Global Hackathon", body: "Build with developers across 10+ cities and submit for recognition and prizes." },
+const fundamentals: Card[] = [
+  { eyebrow: "Goal", title: "From Prompt to Worker", body: "An agent is not just a chatbot. It receives a goal, reasons about the task, uses tools, and returns finished work." },
+  { eyebrow: "Input", title: "Context First", body: "Good agents start with documents, user intent, product data, rules, constraints, and success criteria." },
+  { eyebrow: "Output", title: "Useful Action", body: "The best result is not a long answer. It is a completed workflow, a decision, a file, an update, or a deployed change." },
+  { eyebrow: "Mindset", title: "Small Autonomy", body: "Start with one repeatable task, make it reliable, then expand its permissions and tool access." },
 ];
 
-const v0Tools: Card[] = [
-  { eyebrow: "Generate", title: "UIs in Seconds", body: "Describe the interface you need and get production-ready React components." },
-  { eyebrow: "Code", title: "AI Suggestions", body: "Use intelligent completions and refactoring while your agent takes shape." },
-  { eyebrow: "Design", title: "System Ready", body: "Work with component libraries, variants, and design tokens from the start." },
-  { eyebrow: "Deploy", title: "One Click", body: "Ship the finished app to a global edge network when the build is ready." },
+const anatomy: Card[] = [
+  { eyebrow: "01", title: "Model", body: "The reasoning layer that interprets goals, plans steps, and decides when to call tools." },
+  { eyebrow: "02", title: "Tools", body: "Functions, APIs, databases, calendars, files, search, code, and MCP servers the agent can operate." },
+  { eyebrow: "03", title: "Memory", body: "Durable context such as preferences, project facts, previous runs, and long-term task state." },
+  { eyebrow: "04", title: "Guardrails", body: "Rules that limit risky behavior, validate outputs, and require human approval when needed." },
 ];
 
-const steps: Card[] = [
-  { eyebrow: "01", title: "Agent Logic", body: "Use AI SDK to wire models, tools, structured output, and reasoning loops." },
-  { eyebrow: "02", title: "Build UI", body: "Generate dashboards, chat screens, controls, and review flows with v0." },
-  { eyebrow: "03", title: "Add MCPs", body: "Connect tools, APIs, files, calendars, CRMs, or databases through MCP servers." },
-  { eyebrow: "04", title: "Deploy", body: "Publish, test live behavior, demo the product, and submit it for judging." },
+const buildPlan: Card[] = [
+  { eyebrow: "Step 1", title: "Pick One Job", body: "Choose a painful workflow: triage support, research leads, summarize docs, schedule tasks, or generate reports." },
+  { eyebrow: "Step 2", title: "Define Done", body: "Write the exact output format, required evidence, failure cases, and what the agent must never do." },
+  { eyebrow: "Step 3", title: "Wire Tools", body: "Give the agent only the tools it needs. Every tool should have clear inputs, outputs, and permissions." },
+  { eyebrow: "Step 4", title: "Test Runs", body: "Run real scenarios, inspect traces, fix prompts and schemas, then repeat until the behavior is predictable." },
 ];
 
 const agentLoop: Card[] = [
@@ -30,18 +31,32 @@ const agentLoop: Card[] = [
   { eyebrow: "04", title: "Learn", body: "Adapt from feedback, logs, tests, and real-world outcomes." },
 ];
 
-const why: Card[] = [
-  { eyebrow: "Why", title: "Automate Work", body: "Build systems that operate 24/7 without waiting for manual handoffs." },
-  { eyebrow: "Why", title: "Scale Impact", body: "Solve painful problems for millions instead of a small internal team." },
-  { eyebrow: "Why", title: "Real Products", body: "Turn a prototype into a durable, deployed, user-facing application." },
-  { eyebrow: "Why", title: "Compete Global", body: "Earn visibility from builders, teams, and the Vercel community." },
+const agentSkills: Card[] = [
+  { eyebrow: "Plan", title: "Break Down Work", body: "Turn a vague request into ordered steps with checkpoints and stopping conditions." },
+  { eyebrow: "Retrieve", title: "Use Knowledge", body: "Search project docs, product data, files, policies, and previous decisions before acting." },
+  { eyebrow: "Act", title: "Call Tools", body: "Create tickets, update records, write code, send messages, run checks, and produce artifacts." },
+  { eyebrow: "Reflect", title: "Verify Results", body: "Compare output against the goal, catch errors, ask for help, and retry safely." },
 ];
 
 const stack: Card[] = [
-  { eyebrow: "AI SDK", title: "Models + Tools", body: "Streaming, tool calling, structured outputs, and agent patterns." },
-  { eyebrow: "MCP", title: "External Context", body: "Connect agents to tools, APIs, and business systems." },
-  { eyebrow: "Workflows", title: "Durable Runs", body: "Long-running background agents with retries and reliability." },
-  { eyebrow: "v0", title: "Instant UI", body: "Natural-language interface generation for the product layer." },
+  { eyebrow: "AI SDK", title: "Reasoning + Tools", body: "Model calls, streaming responses, structured output, and type-safe tool calling." },
+  { eyebrow: "MCP", title: "Tool Connectors", body: "A standard way for agents to reach files, services, databases, search, and internal systems." },
+  { eyebrow: "Workflows", title: "Reliable Runs", body: "Durable background execution for tasks that take time, fail, retry, or need state." },
+  { eyebrow: "UI", title: "Human Control", body: "Review screens, approvals, logs, settings, and visibility into what the agent is doing." },
+];
+
+const guardrails: Card[] = [
+  { eyebrow: "Scope", title: "Least Privilege", body: "Give the agent narrow permissions. It should only access what the task requires." },
+  { eyebrow: "Approval", title: "Human in the Loop", body: "Require confirmation for payments, deletes, public posts, emails, and irreversible actions." },
+  { eyebrow: "Validation", title: "Structured Checks", body: "Use schemas, tests, required citations, and output validation before accepting results." },
+  { eyebrow: "Logs", title: "Trace Everything", body: "Record prompts, tool calls, decisions, failures, and final outputs so behavior can be reviewed." },
+];
+
+const evaluation: Card[] = [
+  { eyebrow: "Quality", title: "Task Success", body: "Did it complete the job accurately without hidden manual work?" },
+  { eyebrow: "Speed", title: "Time Saved", body: "Does the agent reduce minutes, clicks, meetings, or handoffs?" },
+  { eyebrow: "Trust", title: "Explainability", body: "Can a user understand why the agent made each important decision?" },
+  { eyebrow: "Reliability", title: "Failure Handling", body: "Does it stop safely, recover cleanly, and ask for help when uncertain?" },
 ];
 
 const details: Card[] = [
@@ -52,17 +67,17 @@ const details: Card[] = [
 ];
 
 const tracks = [
-  { eyebrow: "Track 1", title: "Workflows", body: "Durable async agents for long-running tasks.", Icon: Workflow },
-  { eyebrow: "Track 2", title: "v0 + MCPs", body: "UI-first agents connected to useful tools.", Icon: Code2 },
-  { eyebrow: "Track 3", title: "ChatSDK Agents", body: "Slack, Discord, Teams, and real-time chat products.", Icon: Cpu },
-  { eyebrow: "All Tracks", title: "Open to All", body: "Pick the path that fits your skill and idea.", Icon: Globe2 },
+  { eyebrow: "Track 1", title: "Personal Agent", body: "An assistant that manages an individual workflow end-to-end.", Icon: Workflow },
+  { eyebrow: "Track 2", title: "Business Agent", body: "A reliable operator for support, sales, finance, hiring, or operations.", Icon: Code2 },
+  { eyebrow: "Track 3", title: "Developer Agent", body: "A coding or DevOps helper that reads context, edits, tests, and reports.", Icon: Cpu },
+  { eyebrow: "Track 4", title: "Research Agent", body: "A system that gathers evidence, compares sources, and produces decisions.", Icon: Globe2 },
 ];
 
-const prizes: Card[] = [
-  { eyebrow: "01st Place", title: "$3,000", body: "Vercel credits + featured on all channels." },
-  { eyebrow: "02nd Place", title: "$2,000", body: "Vercel credits + community recognition." },
-  { eyebrow: "03rd Place", title: "$1,000", body: "Credits + Vercel Pro for one year." },
-  { eyebrow: "All", title: "Portfolio", body: "Showcase your work globally." },
+const demo: Card[] = [
+  { eyebrow: "Show", title: "The Problem", body: "Explain the painful workflow and who experiences it." },
+  { eyebrow: "Prove", title: "Agent Autonomy", body: "Show the agent planning, using tools, and completing real actions." },
+  { eyebrow: "Trust", title: "Safety Layer", body: "Show approvals, logs, constraints, and how failures are handled." },
+  { eyebrow: "Impact", title: "Before / After", body: "Quantify time saved, quality improved, or work unlocked." },
 ];
 
 const prep: Card[] = [
