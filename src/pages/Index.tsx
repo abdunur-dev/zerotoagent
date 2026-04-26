@@ -193,8 +193,8 @@ const Index = () => {
       </section>
 
       <Slide id="video">
-        <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
-          <div><Label step="01 / Vercel Message" title="Zero to Agent Starts Here" /><p className="max-w-xl text-xl leading-8 text-muted-foreground">Begin with the Vercel team message for the event. The focus is clear: move from simple prompts to agents that can plan, use tools, act safely, and ship real work.</p></div>
+        <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-center lg:gap-10">
+          <div><Label step="01 / Vercel Message" title="Zero to Agent Starts Here" /><p className="max-w-xl text-base leading-7 text-muted-foreground md:text-xl md:leading-8">Begin with the Vercel team message for the event. The focus is clear: move from simple prompts to agents that can plan, use tools, act safely, and ship real work.</p></div>
           <div className="overflow-hidden border-y border-border bg-card">
             <iframe className="aspect-video w-full" src="https://www.youtube-nocookie.com/embed/r9hB_CQQIMk?rel=0&modestbranding=1" title="Vercel team message for Zero to Agent" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen />
           </div>
@@ -212,22 +212,22 @@ const Index = () => {
 
       <Slide id="tracks">
         <Label step="10 / Project Direction" title="Choose an Agent Type" />
-        <div className="grid md:grid-cols-2 lg:grid-cols-4">{tracks.map(({ eyebrow, title, body, Icon }) => <article key={title} className="content-row p-6 transition hover:bg-secondary md:border-r md:border-border"><Icon className="mb-10 h-6 w-6" /><p className="font-mono text-xs uppercase tracking-[0.16em] text-muted-foreground">{eyebrow}</p><h3 className="mt-4 text-3xl font-medium">{title}</h3><p className="mt-4 leading-7 text-muted-foreground">{body}</p></article>)}</div>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4">{tracks.map(({ eyebrow, title, body, Icon }) => <article key={title} className="content-row p-5 transition hover:bg-secondary sm:border-r sm:border-border md:p-6"><Icon className="mb-6 h-6 w-6 md:mb-10" /><p className="font-mono text-[0.68rem] uppercase tracking-[0.14em] text-muted-foreground md:text-xs md:tracking-[0.16em]">{eyebrow}</p><h3 className="mt-4 text-2xl font-medium leading-tight md:text-3xl">{title}</h3><p className="mt-3 text-sm leading-6 text-muted-foreground md:mt-4 md:text-base md:leading-7">{body}</p></article>)}</div>
       </Slide>
 
       <Slide id="demo"><Label step="11 / Demo" title="What to Present" /><CardGrid items={demo} compact /></Slide>
       <Slide id="resources">
         <Label step="12 / Resources" title="Path From Zero to Shipped" />
-        <div className="grid border-y border-border md:grid-cols-4">
+        <div className="grid border-y border-border sm:grid-cols-2 lg:grid-cols-4">
           {resources.map((item, index) => (
-            <article key={item.title} className="content-row flex min-h-[22rem] flex-col p-6 transition duration-300 hover:bg-secondary md:border-r md:border-border">
+            <article key={item.title} className="content-row flex min-h-[16rem] flex-col p-5 transition duration-300 hover:bg-secondary sm:border-r sm:border-border md:min-h-[22rem] md:p-6">
               <div className="flex items-center justify-between gap-6">
-                <p className="font-mono text-xs uppercase tracking-[0.16em] text-muted-foreground">{item.eyebrow}</p>
+                <p className="font-mono text-[0.68rem] uppercase tracking-[0.14em] text-muted-foreground md:text-xs md:tracking-[0.16em]">{item.eyebrow}</p>
                 <ExternalLink className="h-4 w-4 text-muted-foreground" />
               </div>
-              <h3 className="mt-12 text-3xl font-medium leading-tight tracking-normal">{item.title}</h3>
-              <p className="mt-5 leading-7 text-muted-foreground">{item.body}</p>
-              <p className="mt-auto pt-10 font-mono text-xs uppercase tracking-[0.16em] text-muted-foreground">{resourceLinks[index]}</p>
+              <h3 className="mt-8 text-2xl font-medium leading-tight tracking-normal md:mt-12 md:text-3xl">{item.title}</h3>
+              <p className="mt-4 text-sm leading-6 text-muted-foreground md:mt-5 md:text-base md:leading-7">{item.body}</p>
+              <p className="mt-auto pt-8 font-mono text-[0.68rem] uppercase tracking-[0.14em] text-muted-foreground md:pt-10 md:text-xs md:tracking-[0.16em]">{resourceLinks[index]}</p>
             </article>
           ))}
         </div>
