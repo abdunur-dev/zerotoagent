@@ -114,26 +114,26 @@ const faq: Card[] = [
 const participantCreditUrl = "https://zerotoagent.dev/event/p9k8Y4A3E7dKFCEe";
 
 const Label = ({ step, title }: { step: string; title: string }) => (
-  <header className="mb-8 md:mb-12">
-    <p className="font-mono text-xs uppercase tracking-[0.18em] text-muted-foreground">{step}</p>
-    <h2 className="mt-5 max-w-5xl font-display text-5xl font-semibold leading-none tracking-normal text-balance md:text-7xl">{title}</h2>
+  <header className="mb-7 md:mb-12">
+    <p className="font-mono text-[0.68rem] uppercase tracking-[0.16em] text-muted-foreground md:text-xs md:tracking-[0.18em]">{step}</p>
+    <h2 className="mt-4 max-w-5xl font-display text-4xl font-semibold leading-[0.96] tracking-normal text-balance sm:text-5xl md:mt-5 md:text-7xl">{title}</h2>
   </header>
 );
 
 const CardGrid = ({ items, compact = false }: { items: Card[]; compact?: boolean }) => (
-  <div className={`grid ${compact ? "md:grid-cols-4" : "md:grid-cols-2 lg:grid-cols-4"}`}>
+  <div className={`grid ${compact ? "sm:grid-cols-2 lg:grid-cols-4" : "sm:grid-cols-2 lg:grid-cols-4"}`}>
     {items.map((item) => (
-      <article key={`${item.eyebrow}-${item.title}`} className="content-row p-6 transition duration-300 hover:bg-secondary md:border-r md:border-border">
-        <p className="font-mono text-xs uppercase tracking-[0.16em] text-muted-foreground">{item.eyebrow}</p>
-        <h3 className="mt-8 text-2xl font-medium tracking-normal md:text-3xl">{item.title}</h3>
-        <p className="mt-4 leading-7 text-muted-foreground">{item.body}</p>
+      <article key={`${item.eyebrow}-${item.title}`} className="content-row p-5 transition duration-300 hover:bg-secondary sm:border-r sm:border-border md:p-6">
+        <p className="font-mono text-[0.68rem] uppercase tracking-[0.14em] text-muted-foreground md:text-xs md:tracking-[0.16em]">{item.eyebrow}</p>
+        <h3 className="mt-5 text-2xl font-medium leading-tight tracking-normal md:mt-8 md:text-3xl">{item.title}</h3>
+        <p className="mt-3 text-sm leading-6 text-muted-foreground md:mt-4 md:text-base md:leading-7">{item.body}</p>
       </article>
     ))}
   </div>
 );
 
 const Slide = ({ id, children, className = "" }: { id: string; children: React.ReactNode; className?: string }) => (
-  <section id={id} className={`slide-shell flex items-center border-t border-border px-6 py-24 md:px-10 ${className}`}>
+  <section id={id} className={`slide-shell flex items-start border-t border-border px-4 py-16 sm:px-6 md:items-center md:px-10 md:py-24 ${className}`}>
     <div className="mx-auto w-full max-w-7xl animate-fade-up">{children}</div>
   </section>
 );
