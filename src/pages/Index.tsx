@@ -95,6 +95,8 @@ const resources: Card[] = [
   { eyebrow: "04", title: "Ship Publicly", body: "Demo at the event, deploy a live URL, and share the build with #ZerotoAgent." },
 ];
 
+const resourceLinks = ["Vercel", "v0", "AI SDK", "#ZerotoAgent"];
+
 const schedule: Card[] = [
   { eyebrow: "08:00 AM", title: "Registration", body: "Check-in, breakfast, and meet other builders." },
   { eyebrow: "09:00 AM", title: "Kickoff", body: "Challenges, rules, themes, and building begins." },
@@ -214,7 +216,22 @@ const Index = () => {
       </Slide>
 
       <Slide id="demo"><Label step="11 / Demo" title="What to Present" /><CardGrid items={demo} compact /></Slide>
-      <Slide id="resources"><Label step="12 / Resources" title="Path From Zero to Shipped" /><CardGrid items={resources} compact /></Slide>
+      <Slide id="resources">
+        <Label step="12 / Resources" title="Path From Zero to Shipped" />
+        <div className="grid border-y border-border md:grid-cols-4">
+          {resources.map((item, index) => (
+            <article key={item.title} className="content-row flex min-h-[22rem] flex-col p-6 transition duration-300 hover:bg-secondary md:border-r md:border-border">
+              <div className="flex items-center justify-between gap-6">
+                <p className="font-mono text-xs uppercase tracking-[0.16em] text-muted-foreground">{item.eyebrow}</p>
+                <ExternalLink className="h-4 w-4 text-muted-foreground" />
+              </div>
+              <h3 className="mt-12 text-3xl font-medium leading-tight tracking-normal">{item.title}</h3>
+              <p className="mt-5 leading-7 text-muted-foreground">{item.body}</p>
+              <p className="mt-auto pt-10 font-mono text-xs uppercase tracking-[0.16em] text-muted-foreground">{resourceLinks[index]}</p>
+            </article>
+          ))}
+        </div>
+      </Slide>
       <Slide id="prepare"><Label step="13 / Prepare" title="Before You Build" /><CardGrid items={prep} compact /></Slide>
 
       <Slide id="credit">
