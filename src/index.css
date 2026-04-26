@@ -167,6 +167,18 @@ All colors MUST be HSL.
     border-bottom: 1px solid hsl(var(--border));
   }
 
+  @media (max-width: 767px) {
+    .slide-shell {
+      min-height: auto;
+      scroll-snap-align: none;
+      scroll-snap-stop: normal;
+    }
+
+    .deck-scroll {
+      scroll-snap-type: none;
+    }
+  }
+
   .text-balance {
     text-wrap: balance;
   }
