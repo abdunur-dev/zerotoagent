@@ -88,6 +88,13 @@ const prep: Card[] = [
   { eyebrow: "Creativity", title: "Start With a Problem", body: "Your idea matters more than years of experience." },
 ];
 
+const resources: Card[] = [
+  { eyebrow: "01", title: "Create Accounts", body: "Set up Vercel and v0 first so you can build, iterate, and deploy without losing time." },
+  { eyebrow: "02", title: "Read Just Enough", body: "Skim AI SDK and Vercel docs to understand models, tools, streaming, and deployment paths." },
+  { eyebrow: "03", title: "Pick One Problem", body: "Choose a narrow workflow for real people. Functional beats flashy." },
+  { eyebrow: "04", title: "Ship Publicly", body: "Demo at the event, deploy a live URL, and share the build with #ZerotoAgent." },
+];
+
 const schedule: Card[] = [
   { eyebrow: "08:00 AM", title: "Registration", body: "Check-in, breakfast, and meet other builders." },
   { eyebrow: "09:00 AM", title: "Kickoff", body: "Challenges, rules, themes, and building begins." },
@@ -131,7 +138,7 @@ const Slide = ({ id, children, className = "" }: { id: string; children: React.R
 
 const Index = () => {
   const [active, setActive] = useState(0);
-  const sectionIds = useMemo(() => ["hero", "video", "fundamentals", "anatomy", "build", "agent", "skills", "stack", "guardrails", "evaluation", "tracks", "demo", "event", "prepare", "schedule", "credit", "submit", "closing"], []);
+  const sectionIds = useMemo(() => ["hero", "video", "fundamentals", "anatomy", "build", "agent", "skills", "stack", "guardrails", "evaluation", "tracks", "demo", "resources", "prepare", "credit", "submit", "closing"], []);
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
@@ -207,25 +214,24 @@ const Index = () => {
       </Slide>
 
       <Slide id="demo"><Label step="11 / Demo" title="What to Present" /><CardGrid items={demo} compact /></Slide>
-      <Slide id="event"><Label step="12 / Event" title="Event Details" /><CardGrid items={details} compact /></Slide>
+      <Slide id="resources"><Label step="12 / Resources" title="Path From Zero to Shipped" /><CardGrid items={resources} compact /></Slide>
       <Slide id="prepare"><Label step="13 / Prepare" title="Before You Build" /><CardGrid items={prep} compact /></Slide>
-      <Slide id="schedule"><Label step="14 / Timeline" title="Build Day Flow" /><div className="divide-y divide-border border-y border-border">{schedule.map((item) => <div key={item.eyebrow} className="grid gap-4 py-7 md:grid-cols-[12rem_1fr]"><p className="font-mono text-sm text-muted-foreground">{item.eyebrow}</p><div><h3 className="text-3xl font-medium">{item.title}</h3><p className="mt-2 text-muted-foreground">{item.body}</p></div></div>)}</div></Slide>
 
       <Slide id="credit">
         <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-          <div><Label step="15 / Participant Credit" title="Scan for v0 Credits" /><p className="max-w-2xl text-xl leading-8 text-muted-foreground">Participants should scan this code to open the Zero to Agent event page and claim their v0 credit from the Vercel team.</p><a href={participantCreditUrl} target="_blank" rel="noreferrer" className="mt-8 inline-flex items-center gap-3 border-b border-border pb-2 font-mono text-sm text-muted-foreground transition hover:text-foreground"><QrCode className="h-4 w-4" /> Open credit page <ArrowUpRight className="h-4 w-4" /></a></div>
+          <div><Label step="14 / Participant Credit" title="Scan for v0 Credits" /><p className="max-w-2xl text-xl leading-8 text-muted-foreground">Participants should scan this code to open the Zero to Agent event page and claim their v0 credit from the Vercel team.</p><a href={participantCreditUrl} target="_blank" rel="noreferrer" className="mt-8 inline-flex items-center gap-3 border-b border-border pb-2 font-mono text-sm text-muted-foreground transition hover:text-foreground"><QrCode className="h-4 w-4" /> Open credit page <ArrowUpRight className="h-4 w-4" /></a></div>
           <div className="flex justify-center border-y border-border py-8"><img src={v0CreditQr} alt="QR code for participants to claim v0 credits" className="aspect-square w-full max-w-md bg-foreground p-5" /></div>
         </div>
       </Slide>
 
       <Slide id="submit">
         <div className="grid gap-10 lg:grid-cols-[1fr_0.9fr] lg:items-center">
-          <div><Label step="16 / Ship" title="Finalize the Agent" /><p className="max-w-2xl text-xl leading-8 text-muted-foreground">Make the agent narrow, reliable, visible, and safe. A simple agent that completes one real job is stronger than a broad demo that cannot be trusted.</p><a href="https://community.vercel.com/hackathons/zero-to-agent" target="_blank" rel="noreferrer" className="mt-10 inline-flex items-center gap-3 rounded-sm bg-primary px-6 py-3 font-semibold text-primary-foreground transition hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">Go to Submission <ArrowUpRight className="h-5 w-5" /></a></div>
+          <div><Label step="15 / Ship" title="Finalize the Agent" /><p className="max-w-2xl text-xl leading-8 text-muted-foreground">Make the agent narrow, reliable, visible, and safe. A simple agent that completes one real job is stronger than a broad demo that cannot be trusted.</p><a href="https://community.vercel.com/hackathons/zero-to-agent" target="_blank" rel="noreferrer" className="mt-10 inline-flex items-center gap-3 rounded-sm bg-primary px-6 py-3 font-semibold text-primary-foreground transition hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">Go to Submission <ArrowUpRight className="h-5 w-5" /></a></div>
            <div className="border-y border-border py-8"><MonitorUp className="mb-8 h-8 w-8" /><h3 className="text-3xl font-medium">Resources You Need</h3><div className="mt-8 grid gap-3">{["AI SDK", "v0 Builder", "Next.js", "Vercel Docs"].map((r) => <div key={r} className="flex items-center justify-between border-b border-border py-4 text-muted-foreground"><span>{r}</span><ArrowUpRight className="h-4 w-4" /></div>)}</div></div>
         </div>
       </Slide>
 
-      <Slide id="closing"><Label step="17 / Closing" title="Start Small. Make It Act." /><CardGrid items={faq} compact /></Slide>
+      <Slide id="closing"><Label step="16 / Closing" title="Start Small. Make It Act." /><CardGrid items={faq} compact /></Slide>
 
       <div className="fixed bottom-6 right-6 z-50 flex border border-border bg-background/80 backdrop-blur">
         <button aria-label="Previous slide" onClick={() => goTo(-1)} className="border-r border-border p-3 text-muted-foreground transition hover:bg-secondary hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"><ChevronUp className="h-4 w-4" /></button>
