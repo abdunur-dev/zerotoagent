@@ -116,7 +116,7 @@ const participantCreditUrl = "https://zerotoagent.dev/event/p9k8Y4A3E7dKFCEe";
 const Label = ({ step, title }: { step: string; title: string }) => (
   <header className="mb-6 md:mb-12">
     <p className="font-mono text-xs uppercase tracking-[0.18em] text-muted-foreground">{step}</p>
-    <h2 className="mt-4 max-w-5xl font-display text-4xl font-semibold leading-none tracking-normal text-balance sm:text-5xl md:mt-5 md:text-7xl">{title}</h2>
+    <h2 className="mt-4 max-w-5xl font-display text-3xl font-semibold leading-tight tracking-normal text-balance sm:text-4xl md:mt-5 md:text-7xl md:leading-none">{title}</h2>
   </header>
 );
 
@@ -125,8 +125,8 @@ const CardGrid = ({ items, compact = false }: { items: Card[]; compact?: boolean
     {items.map((item) => (
       <article key={`${item.eyebrow}-${item.title}`} className="content-row p-6 transition duration-300 hover:bg-secondary md:border-r md:border-border">
         <p className="font-mono text-xs uppercase tracking-[0.16em] text-muted-foreground">{item.eyebrow}</p>
-        <h3 className="mt-8 text-2xl font-medium tracking-normal md:text-3xl">{item.title}</h3>
-        <p className="mt-4 leading-7 text-muted-foreground">{item.body}</p>
+        <h3 className="mt-6 text-xl font-medium tracking-normal md:mt-8 md:text-3xl">{item.title}</h3>
+        <p className="mt-3 text-sm leading-6 text-muted-foreground md:mt-4 md:text-base md:leading-7">{item.body}</p>
       </article>
     ))}
   </div>
@@ -182,13 +182,13 @@ const Index = () => {
         <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-background to-transparent" />
         <div className="relative mx-auto flex max-w-6xl animate-fade-up flex-col items-center text-center">
           <span className="triangle-mark mb-8 animate-slow-pulse md:mb-12" aria-hidden="true" />
-          <h1 className="font-display text-5xl font-semibold leading-none tracking-normal text-balance sm:text-6xl md:text-9xl">Zero to <span className="hero-pixel-word">Agent</span></h1>
-          <p className="mt-6 max-w-xs font-mono text-xs uppercase tracking-[0.16em] text-muted-foreground sm:max-w-none md:mt-8 md:text-base">Vercel Team Message · O2A Global Build Week</p>
-          <div className="mt-8 flex flex-col items-center divide-border text-base md:mt-10 md:flex-row md:divide-x md:text-lg">
+          <h1 className="font-display text-4xl font-semibold leading-tight tracking-normal text-balance sm:text-5xl md:text-9xl md:leading-none">Zero to <span className="hero-pixel-word">Agent</span></h1>
+          <p className="mt-5 max-w-xs font-mono text-[0.68rem] uppercase tracking-[0.16em] text-muted-foreground sm:max-w-none md:mt-8 md:text-base">Vercel Team Message · O2A Global Build Week</p>
+          <div className="mt-7 flex flex-col items-center divide-border text-sm md:mt-10 md:flex-row md:divide-x md:text-lg">
             <span className="flex items-center gap-3 px-4 py-2 md:px-6"><Calendar className="h-5 w-5 shrink-0" /> May 2, 2026</span>
             <span className="flex items-center gap-3 px-4 py-2 md:px-6"><MapPin className="h-5 w-5 shrink-0" /> Addis Ababa, Ethiopia</span>
           </div>
-          <p className="mt-8 max-w-3xl text-base leading-7 text-muted-foreground text-balance md:mt-12 md:text-xl md:leading-8">A focused journey from basic prompt to reliable AI agent: context, tools, memory, safety, evaluation, and shipping.</p>
+          <p className="mt-7 max-w-3xl text-sm leading-6 text-muted-foreground text-balance md:mt-12 md:text-xl md:leading-8">A focused journey from basic prompt to reliable AI agent: context, tools, memory, safety, evaluation, and shipping.</p>
         </div>
       </section>
 
