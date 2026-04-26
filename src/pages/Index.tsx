@@ -235,22 +235,22 @@ const Index = () => {
       <Slide id="prepare"><Label step="13 / Prepare" title="Before You Build" /><CardGrid items={prep} compact /></Slide>
 
       <Slide id="credit">
-        <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-          <div><Label step="14 / Participant Credit" title="Scan for v0 Credits" /><p className="max-w-2xl text-xl leading-8 text-muted-foreground">Participants should scan this code to open the Zero to Agent event page and claim their v0 credit from the Vercel team.</p><a href={participantCreditUrl} target="_blank" rel="noreferrer" className="mt-8 inline-flex items-center gap-3 border-b border-border pb-2 font-mono text-sm text-muted-foreground transition hover:text-foreground"><QrCode className="h-4 w-4" /> Open credit page <ArrowUpRight className="h-4 w-4" /></a></div>
+        <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:gap-10">
+          <div><Label step="14 / Participant Credit" title="Scan for v0 Credits" /><p className="max-w-2xl text-base leading-7 text-muted-foreground md:text-xl md:leading-8">Participants should scan this code to open the Zero to Agent event page and claim their v0 credit from the Vercel team.</p><a href={participantCreditUrl} target="_blank" rel="noreferrer" className="mt-6 inline-flex items-center gap-3 border-b border-border pb-2 font-mono text-xs text-muted-foreground transition hover:text-foreground md:mt-8 md:text-sm"><QrCode className="h-4 w-4" /> Open credit page <ArrowUpRight className="h-4 w-4" /></a></div>
           <div className="flex justify-center border-y border-border py-8"><img src={v0CreditQr} alt="QR code for participants to claim v0 credits" className="aspect-square w-full max-w-md bg-foreground p-5" /></div>
         </div>
       </Slide>
 
       <Slide id="submit">
-        <div className="grid gap-10 lg:grid-cols-[1fr_0.9fr] lg:items-center">
-          <div><Label step="15 / Ship" title="Finalize the Agent" /><p className="max-w-2xl text-xl leading-8 text-muted-foreground">Make the agent narrow, reliable, visible, and safe. A simple agent that completes one real job is stronger than a broad demo that cannot be trusted.</p><a href="https://community.vercel.com/hackathons/zero-to-agent" target="_blank" rel="noreferrer" className="mt-10 inline-flex items-center gap-3 rounded-sm bg-primary px-6 py-3 font-semibold text-primary-foreground transition hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">Go to Submission <ArrowUpRight className="h-5 w-5" /></a></div>
-           <div className="border-y border-border py-8"><MonitorUp className="mb-8 h-8 w-8" /><h3 className="text-3xl font-medium">Resources You Need</h3><div className="mt-8 grid gap-3">{["AI SDK", "v0 Builder", "Next.js", "Vercel Docs"].map((r) => <div key={r} className="flex items-center justify-between border-b border-border py-4 text-muted-foreground"><span>{r}</span><ArrowUpRight className="h-4 w-4" /></div>)}</div></div>
+        <div className="grid gap-8 lg:grid-cols-[1fr_0.9fr] lg:items-center lg:gap-10">
+          <div><Label step="15 / Ship" title="Finalize the Agent" /><p className="max-w-2xl text-base leading-7 text-muted-foreground md:text-xl md:leading-8">Make the agent narrow, reliable, visible, and safe. A simple agent that completes one real job is stronger than a broad demo that cannot be trusted.</p><a href="https://community.vercel.com/hackathons/zero-to-agent" target="_blank" rel="noreferrer" className="mt-8 inline-flex items-center gap-3 rounded-sm bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground transition hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring md:mt-10 md:px-6 md:text-base">Go to Submission <ArrowUpRight className="h-5 w-5" /></a></div>
+           <div className="border-y border-border py-7 md:py-8"><MonitorUp className="mb-6 h-8 w-8 md:mb-8" /><h3 className="text-2xl font-medium md:text-3xl">Resources You Need</h3><div className="mt-6 grid gap-2 md:mt-8 md:gap-3">{["AI SDK", "v0 Builder", "Next.js", "Vercel Docs"].map((r) => <div key={r} className="flex items-center justify-between border-b border-border py-3 text-sm text-muted-foreground md:py-4 md:text-base"><span>{r}</span><ArrowUpRight className="h-4 w-4" /></div>)}</div></div>
         </div>
       </Slide>
 
       <Slide id="closing"><Label step="16 / Closing" title="Start Small. Make It Act." /><CardGrid items={faq} compact /></Slide>
 
-      <div className="fixed bottom-6 right-6 z-50 flex border border-border bg-background/80 backdrop-blur">
+      <div className="fixed bottom-4 right-4 z-50 flex border border-border bg-background/80 backdrop-blur md:bottom-6 md:right-6">
         <button aria-label="Previous slide" onClick={() => goTo(-1)} className="border-r border-border p-3 text-muted-foreground transition hover:bg-secondary hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"><ChevronUp className="h-4 w-4" /></button>
         <button aria-label="Next slide" onClick={() => goTo(1)} className="p-3 text-muted-foreground transition hover:bg-secondary hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"><ChevronDown className="h-4 w-4" /></button>
       </div>
