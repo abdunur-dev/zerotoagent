@@ -53,6 +53,13 @@ const guardrails: Card[] = [
   { eyebrow: "Logs", title: "Trace Everything", body: "Record prompts, tool calls, decisions, failures, and final outputs so behavior can be reviewed." },
 ];
 
+const securityIncident: Card[] = [
+  { eyebrow: "Alert", title: "Vercel Incident", body: "Vercel reported unauthorized access to certain internal systems and is actively investigating the incident." },
+  { eyebrow: "Updates", title: "Security Bulletin", body: "Follow Vercel's official security bulletin for confirmed updates, guidance, and best practices." },
+  { eyebrow: "Action", title: "Protect Accounts", body: "Set up 2FA, review access, rotate secrets, and change sensitive environment variables for peace of mind." },
+  { eyebrow: "Hygiene", title: "Update Dependencies", body: "Upgrade vulnerable packages, review deployments, and keep project security checks part of the workflow." },
+];
+
 const evaluation: Card[] = [
   { eyebrow: "Quality", title: "Task Success", body: "Did it complete the job accurately without hidden manual work?" },
   { eyebrow: "Speed", title: "Time Saved", body: "Does the agent reduce minutes, clicks, meetings, or handoffs?" },
@@ -140,7 +147,7 @@ const Slide = ({ id, children, className = "" }: { id: string; children: React.R
 
 const Index = () => {
   const [active, setActive] = useState(0);
-  const sectionIds = useMemo(() => ["hero", "video", "fundamentals", "anatomy", "build", "agent", "skills", "stack", "guardrails", "evaluation", "tracks", "demo", "resources", "prepare", "credit", "submit", "closing"], []);
+  const sectionIds = useMemo(() => ["hero", "video", "fundamentals", "anatomy", "build", "agent", "skills", "stack", "guardrails", "security", "evaluation", "tracks", "demo", "resources", "prepare", "credit", "submit", "closing"], []);
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
@@ -208,16 +215,17 @@ const Index = () => {
       <Slide id="skills"><Label step="06 / Core Skills" title="What the Agent Must Do" /><CardGrid items={agentSkills} compact /></Slide>
       <Slide id="stack"><Label step="07 / Tools" title="Agent Infrastructure" /><CardGrid items={stack} compact /></Slide>
       <Slide id="guardrails"><Label step="08 / Safety" title="Make It Trustworthy" /><CardGrid items={guardrails} compact /></Slide>
-      <Slide id="evaluation"><Label step="09 / Evaluation" title="How to Judge the Agent" /><CardGrid items={evaluation} compact /></Slide>
+      <Slide id="security"><Label step="09 / Security" title="Vercel Security Bulletin" /><CardGrid items={securityIncident} compact /></Slide>
+      <Slide id="evaluation"><Label step="10 / Evaluation" title="How to Judge the Agent" /><CardGrid items={evaluation} compact /></Slide>
 
       <Slide id="tracks">
-        <Label step="10 / Project Direction" title="Choose an Agent Type" />
+        <Label step="11 / Project Direction" title="Choose an Agent Type" />
         <div className="grid sm:grid-cols-2 lg:grid-cols-4">{tracks.map(({ eyebrow, title, body, Icon }) => <article key={title} className="content-row p-4 transition hover:bg-secondary md:border-r md:border-border md:p-6"><Icon className="mb-5 h-5 w-5 md:mb-10 md:h-6 md:w-6" /><p className="font-mono text-xs uppercase tracking-[0.16em] text-muted-foreground">{eyebrow}</p><h3 className="mt-3 text-lg font-medium md:mt-4 md:text-3xl">{title}</h3><p className="mt-2 text-sm leading-6 text-muted-foreground md:mt-4 md:text-base md:leading-7">{body}</p></article>)}</div>
       </Slide>
 
-      <Slide id="demo"><Label step="11 / Demo" title="What to Present" /><CardGrid items={demo} compact /></Slide>
+      <Slide id="demo"><Label step="12 / Demo" title="What to Present" /><CardGrid items={demo} compact /></Slide>
       <Slide id="resources">
-        <Label step="12 / Resources" title="Path From Zero to Shipped" />
+        <Label step="13 / Resources" title="Path From Zero to Shipped" />
         <div className="grid border-y border-border sm:grid-cols-2 md:grid-cols-4">
           {resources.map((item, index) => (
             <article key={item.title} className="content-row flex flex-col p-4 transition duration-300 hover:bg-secondary md:min-h-[22rem] md:border-r md:border-border md:p-6">
@@ -232,23 +240,23 @@ const Index = () => {
           ))}
         </div>
       </Slide>
-      <Slide id="prepare"><Label step="13 / Prepare" title="Before You Build" /><CardGrid items={prep} compact /></Slide>
+      <Slide id="prepare"><Label step="14 / Prepare" title="Before You Build" /><CardGrid items={prep} compact /></Slide>
 
       <Slide id="credit">
         <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-          <div><Label step="14 / Participant Credit" title="Scan for v0 Credits" /><p className="max-w-2xl text-sm leading-6 text-muted-foreground md:text-xl md:leading-8">Participants should scan this code to open the Zero to Agent event page and claim their v0 credit from the Vercel team.</p><a href={participantCreditUrl} target="_blank" rel="noreferrer" className="mt-6 inline-flex items-center gap-3 border-b border-border pb-2 font-mono text-xs text-muted-foreground transition hover:text-foreground md:mt-8 md:text-sm"><QrCode className="h-4 w-4" /> Open credit page <ArrowUpRight className="h-4 w-4" /></a></div>
+          <div><Label step="15 / Participant Credit" title="Scan for v0 Credits" /><p className="max-w-2xl text-sm leading-6 text-muted-foreground md:text-xl md:leading-8">Participants should scan this code to open the Zero to Agent event page and claim their v0 credit from the Vercel team.</p><a href={participantCreditUrl} target="_blank" rel="noreferrer" className="mt-6 inline-flex items-center gap-3 border-b border-border pb-2 font-mono text-xs text-muted-foreground transition hover:text-foreground md:mt-8 md:text-sm"><QrCode className="h-4 w-4" /> Open credit page <ArrowUpRight className="h-4 w-4" /></a></div>
           <div className="flex justify-center border-y border-border py-6 md:py-8"><img src={v0CreditQr} alt="QR code for participants to claim v0 credits" className="aspect-square w-full max-w-[16rem] bg-foreground p-4 md:max-w-md md:p-5" /></div>
         </div>
       </Slide>
 
       <Slide id="submit">
         <div className="grid gap-10 lg:grid-cols-[1fr_0.9fr] lg:items-center">
-          <div><Label step="15 / Ship" title="Finalize the Agent" /><p className="max-w-2xl text-sm leading-6 text-muted-foreground md:text-xl md:leading-8">Make the agent narrow, reliable, visible, and safe. A simple agent that completes one real job is stronger than a broad demo that cannot be trusted.</p><a href="https://community.vercel.com/hackathons/zero-to-agent" target="_blank" rel="noreferrer" className="mt-7 inline-flex items-center gap-3 rounded-sm bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground transition hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring md:mt-10 md:px-6 md:text-base">Go to Submission <ArrowUpRight className="h-5 w-5" /></a></div>
+          <div><Label step="16 / Ship" title="Finalize the Agent" /><p className="max-w-2xl text-sm leading-6 text-muted-foreground md:text-xl md:leading-8">Make the agent narrow, reliable, visible, and safe. A simple agent that completes one real job is stronger than a broad demo that cannot be trusted.</p><a href="https://community.vercel.com/hackathons/zero-to-agent" target="_blank" rel="noreferrer" className="mt-7 inline-flex items-center gap-3 rounded-sm bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground transition hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring md:mt-10 md:px-6 md:text-base">Go to Submission <ArrowUpRight className="h-5 w-5" /></a></div>
            <div className="border-y border-border py-6 md:py-8"><MonitorUp className="mb-5 h-6 w-6 md:mb-8 md:h-8 md:w-8" /><h3 className="text-xl font-medium md:text-3xl">Resources You Need</h3><div className="mt-5 grid gap-2 md:mt-8 md:gap-3">{["AI SDK", "v0 Builder", "Next.js", "Vercel Docs"].map((r) => <div key={r} className="flex items-center justify-between border-b border-border py-3 text-sm text-muted-foreground md:py-4 md:text-base"><span>{r}</span><ArrowUpRight className="h-4 w-4" /></div>)}</div></div>
         </div>
       </Slide>
 
-      <Slide id="closing"><Label step="16 / Closing" title="Start Small. Make It Act." /><CardGrid items={faq} compact /></Slide>
+      <Slide id="closing"><Label step="17 / Closing" title="Start Small. Make It Act." /><CardGrid items={faq} compact /></Slide>
 
       <div className="fixed bottom-6 right-6 z-50 flex border border-border bg-background/80 backdrop-blur">
         <button aria-label="Previous slide" onClick={() => goTo(-1)} className="border-r border-border p-3 text-muted-foreground transition hover:bg-secondary hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"><ChevronUp className="h-4 w-4" /></button>
